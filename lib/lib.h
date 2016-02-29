@@ -1,6 +1,7 @@
 #ifndef LIB_H
 #define LIB_H
 
+#include "macros.h"
 #include "linkedlist.h"
 #include "bool.h"
 #include "colors.h"

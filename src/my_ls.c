@@ -3,28 +3,27 @@
 #include <sys/unistd.h>
 #include "my_ls.h"
 
-#define for_loop(start, end, incr) for(i = start; \
-                                        i < end;  \
-                                         i += incr)
-
-typedef struct stat t_stat;
-
 t_bool get_files_and_folders(t_ll **files, t_ll **folders,
-                         t_ll *args, t_opts *opts)
+                         t_ll *filenames, t_opts *opts)
 {
-  *files = NULL;
-  *folders = NULL;
   t_stat statbuf;
   t_bool err;
+  char *filename;
+  t_finfo *finfo_tmp;
 
+  *files = NULL;
+  *folders = NULL;
   err = false;
-  ll_iter(args) {
-    if (stat((char*)args->data, &statbuf) == -1) {
-      err = !file_error((char*)args->data);
+  ll_iter(filenames) {
+    filename = (char*)filenames->data;
+    if (stat(filename, &statbuf) == -1) {
+      err = !file_error(filename);
       continue ;
     }
-    ll_append(*(S_ISDIR(statbuf.st_mode) ? folders : files),
-              ll_new_data(&statbuf, sizeof(statbuf)));
+    finfo_tmp = finfo_new(filename, &statbuf);
+    *files = ll_append(*files, ll_new(finfo_tmp));
+    if (S_ISDIR(statbuf.st_mode))
+      *folders = ll_append(*folders, ll_new(finfo_tmp));
   }
   return (!err);
 }
@@ -36,5 +35,11 @@ t_bool my_ls(t_ll *args, t_opts *opts)
 
   if (!get_files_and_folders(&files, &folders, args, opts))
     return (false);
+  display_files(files, opts);
+  /*
+  if (opts->recursive)
+    ll_iter(folders)
+      my_ls(folders)
+      */
   return (true);
 }
