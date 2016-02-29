@@ -8,7 +8,6 @@ void display_files(t_ll *files, t_opts *opts)
   t_finfo* finfo;
   int colsizes[COL_COUNT];
 
-  sort_files(files, opts);
   if (opts->longlist)
     fill_longlist_info(files, colsizes);
 
