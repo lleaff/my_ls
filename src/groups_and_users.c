@@ -18,7 +18,6 @@
   return (max);
 }  */
 
-
 int fill_group(t_finfo *f)
 {
   struct group *grp;

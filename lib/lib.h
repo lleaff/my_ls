@@ -18,6 +18,7 @@ char *my_itoa(int n);
 int  my_getnbr(char *str);
 int  is_int(char *str);
 int  str_eq(char* str1, char* str2);
+int  my_strcmp(char *s1, char *s2);
 int  my_strncmp(char *s1, char *s2, int n);
 char *my_strstr(char *str, char *to_find);
 char **my_str_to_wordtab(char *str);

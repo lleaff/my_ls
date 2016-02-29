@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "my_memcpy.h"
 
+typedef int t_comparison_fn(const void*, const void*);
+
 typedef struct s_ll {
     struct s_ll* next;
     void* data;
@@ -27,6 +29,8 @@ void   ll_swap(t_ll* node1, t_ll* node2);
 t_ll*  ll_copy(t_ll* node);
 t_ll*  ll_copy_data(t_ll* node, int size);
 void   ll_free(t_ll* node);
+
+void   ll_sort(t_ll *node, t_comparison_fn);
 
 void   ll_print_strings(t_ll* node, char *delim);
 #ifdef DEBUG

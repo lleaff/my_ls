@@ -4,10 +4,10 @@
 #include "my_ls.h"
 #include "groups_and_users.h"
 
-void print_filename(t_finfo *f)
+void print_filename(t_finfo *finfo)
 {
-  my_putstr(f->isdir ? FG_BLUE : "");
-  my_putstr(f->filename);
+  my_putstr(finfo->isdir ? FG_BLUE : "");
+  my_putstr(finfo->filename);
   my_putstr(COLOR_RESET" ");
 }
 

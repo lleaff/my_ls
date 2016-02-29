@@ -4,5 +4,6 @@
 #include <stdio.h>
 
 void *noop(void *);
+void *noop2(void *, void *);
 
 #endif /* DEBUG_H */
