@@ -45,6 +45,14 @@ t_bool set_opt(char c, t_opts *opts)
   return (true);
 }
 
+t_bool unknown_opt_err(char c)
+{
+  my_puterr(FG_RED"Unknown option \"");
+  my_putcharerr(optopt);
+  my_puterr("\".\n"COLOR_RESET);
+  return (false);
+}
+
 t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
 {
   t_opts * opts;
@@ -52,13 +60,11 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
   int i;
   int c;
 
+  opterr = 0;
   opts = opts_new();
   while ((c = getopt (argc, argv, OPTION_LIST)) != -1)
-  {
-    if (!set_opt(c, opts)) {
-      return (print_usage());
-    }
-  }
+    if (!set_opt(c, opts))
+      return (unknown_opt_err(c) || print_usage());
   for (i = optind, args = NULL; i < argc; i++)
     args = ll_append(args, ll_new(argv[i]));
   return (true);
