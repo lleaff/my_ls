@@ -5,6 +5,7 @@
 
 #define BIN_NAME "my_ls"
 #include <sys/stat.h>
+#include <sys/types.h>
 typedef struct stat t_stat;
 
 #include "lib.h"
@@ -33,8 +34,10 @@ void display_files(t_ll *files, t_opts *opts);
 #define COL_GROUP 3
 
 void print_filename(t_finfo *f);
-void print_permissions(mode_t m);
-void print_links_count(int n);
+void print_permissions(t_finfo *f);
+void print_links_count(t_finfo *f);
+void print_user(t_finfo *finfo, int *colsizes);
+void print_group(t_finfo *finfo, int *colsizes);
 
 /*------------------------------------------------------------*/
 

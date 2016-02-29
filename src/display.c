@@ -7,10 +7,18 @@
 void display_files(t_ll *files, t_opts *opts)
 {
   t_finfo* finfo;
+  int colsizes[COL_COUNT];
+  if (opts->longlist)
+    fill_user_and_group(files, colsizes);
+
   ll_iter(files) {
     finfo = (t_finfo*)files->data;
+    print_permissions(finfo);
+    print_links_count(finfo);
+    print_user(finfo, colsizes);
+    print_group(finfo, colsizes);
+
     print_filename(finfo);
-    my_putstr("\n");
-    print_permissions(finfo->stats.st_mode);
+    my_putchar('\n');
   }
 }

@@ -7,11 +7,20 @@ int my_putstr(char* str)
     return (0);
 }
 
+#define FILL_CHAR ' '
+
 int my_putstrn(char* str, int n)
 {
     int i;
+    char c;
+    int end;
 
-    for (i = 0; i < n; n++)
-        my_putchar(*(str + n));
+    for (i = 0, end = 0; i < n; i++)
+    {
+      if (!end)
+        end = str[i] == '\0';
+      c = !end ? str[i] : FILL_CHAR;
+      my_putchar(c);
+    }
     return(0);
 }

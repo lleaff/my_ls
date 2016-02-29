@@ -4,7 +4,7 @@
 #include "my_ls.h"
 
 t_bool get_files_and_folders(t_ll **files, t_ll **folders,
-                         t_ll *filenames, t_opts *opts)
+                             t_ll *filenames, t_opts *opts)
 {
   t_stat statbuf;
   t_bool err;

@@ -3,7 +3,6 @@
 
 #include "my_ls.h"
 
-int fill_group(t_finfo *f);
-int fill_user(t_finfo *f);
+t_bool fill_user_and_group(t_ll *files, int *colsizes);
 
 #endif /* GROUPS_AND_USERS_H */

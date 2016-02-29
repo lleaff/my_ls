@@ -11,8 +11,11 @@ void print_filename(t_finfo *f)
   my_putstr(COLOR_RESET" ");
 }
 
-void print_permissions(mode_t m)
+void print_permissions(t_finfo *finfo)
 {
+  mode_t m;
+
+  m = finfo->stats.st_mode;
   my_putchar(S_ISDIR(m) ? 'd' : '-');
   my_putchar(S_IRUSR & m ? 'r' : '-');
   my_putchar(S_IWUSR & m ? 'w' : '-');
@@ -26,8 +29,20 @@ void print_permissions(mode_t m)
   my_putchar(' ');
 }
 
-void print_links_count(int n)
+void print_links_count(t_finfo *f)
 {
-  my_put_nbr(n);
+  my_put_nbr(f->stats.st_nlink);
+  my_putchar(' ');
+}
+
+void print_user(t_finfo *finfo, int *colsizes)
+{
+  my_putstrn(finfo->user, colsizes[COL_USER]);
+  my_putchar(' ');
+}
+
+void print_group(t_finfo *finfo, int *colsizes)
+{
+  my_putstrn(finfo->group, colsizes[COL_GROUP]);
   my_putchar(' ');
 }
