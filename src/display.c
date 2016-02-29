@@ -11,33 +11,19 @@ void print_filename(t_finfo *f)
   my_putstr(COLOR_RESET" ");
 }
 
-void print_permission(mode_t m)
+void print_permissions(mode_t m)
 {
-
-  printf("S_IRUSR: %d\n", S_IRUSR);
-  printf("S_IWUSR: %d\n", S_IWUSR);
-  printf("S_IXUSR: %d\n", S_IXUSR);
-  printf("S_IRGRP: %d\n", S_IRGRP);
-  printf("S_IWGRP: %d\n", S_IWGRP);
-  printf("S_IXGRP: %d\n", S_IXGRP);
-  printf("S_IROTH: %d\n", S_IROTH);
-  printf("S_IWOTH: %d\n", S_IWOTH);
-  printf("S_IXOTH: %d\n", S_IXOTH);
-
-
-  /*
   my_putchar(S_ISDIR(m) ? 'd' : '-');
-  my_putchar(S_IRUSR(m) ? 'r' : '-');
-  my_putchar(S_IWUSR(m) ? 'w' : '-');
-  my_putchar(S_IXUSR(m) ? 'x' : '-');
-  my_putchar(S_IRGRP(m) ? 'r' : '-');
-  my_putchar(S_IWGRP(m) ? 'w' : '-');
-  my_putchar(S_IXGRP(m) ? 'x' : '-');
-  my_putchar(S_IROTH(m) ? 'r' : '-');
-  my_putchar(S_IWOTH(m) ? 'w' : '-');
-  my_putchar(S_IXOTH(m) ? 'x' : '-');
+  my_putchar(S_IRUSR & m ? 'r' : '-');
+  my_putchar(S_IWUSR & m ? 'w' : '-');
+  my_putchar(S_IXUSR & m ? 'x' : '-');
+  my_putchar(S_IRGRP & m ? 'r' : '-');
+  my_putchar(S_IWGRP & m ? 'w' : '-');
+  my_putchar(S_IXGRP & m ? 'x' : '-');
+  my_putchar(S_IROTH & m ? 'r' : '-');
+  my_putchar(S_IWOTH & m ? 'w' : '-');
+  my_putchar(S_IXOTH & m ? 'x' : '-');
   my_putchar(' ');
-  */
 }
 
 void print_links_count(int n)
@@ -48,11 +34,11 @@ void print_links_count(int n)
 
 void display_files(t_ll *files, t_opts *opts)
 {
-  /*
-  int max_group_l;
-  int max_user_l;
-  */
+  t_finfo* finfo;
   ll_iter(files) {
-    print_filename((t_finfo*)files->data);
+    finfo = (t_finfo*)files->data;
+    print_filename(finfo);
+    my_putstr("\n");
+    print_permissions(finfo->stats.st_mode);
   }
 }
