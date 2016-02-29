@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 
   if (!parse_args(&args, &opts, argc, argv))
     return (1);
-
+  if (!my_ls(args, opts))
+    return (1);
   return (0);
 }

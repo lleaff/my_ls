@@ -33,4 +33,7 @@ void   ll_print_strings(t_ll* node, char *delim);
 void   ll_debug_strings(t_ll* node);
 #endif /* DEBUG */
 
+#define ll_iter(node) \
+    for (; node != NULL; node = node->next)
+
 #endif /* LINKEDLIST_H */

@@ -67,6 +67,8 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
       return (unknown_opt_err(c) || print_usage());
   for (i = optind, args = NULL; i < argc; i++)
     args = ll_append(args, ll_new(argv[i]));
+  *o_args = args != NULL ? args : ll_new("."); /* Default to cwd */
+  *o_opts = opts;
   return (true);
 }
 

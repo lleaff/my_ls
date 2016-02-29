@@ -5,5 +5,6 @@ void my_putcharerr(char c);
 void my_puterr(char *msg);
 int  fail(char *msg);
 void *fail_ptr(char *msg);
+t_bool file_error(char *filename);
 
 #endif /* ERROR_H */
