@@ -10,10 +10,15 @@ OPTIONS:\n\
   -a\t Include hidden files\n\
   -A\t Include hidden files except '.' and '..'\n\
   -L\t Dereference symbolic links\n\
+  --help Print help\n\
 "
 
-t_bool print_usage()
+t_bool print_usage(t_bool err)
 {
-  my_puterr(USAGE);
+  if (err)
+    my_puterr(USAGE);
+  else
+    my_putstr(USAGE);
+  
   return (false);
 }
