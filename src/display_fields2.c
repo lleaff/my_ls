@@ -7,7 +7,7 @@
 
 void print_filesize(t_finfo *finfo, int *colsizes)
 {
-  my_putstrn(finfo->sizestr, colsizes[COL_SIZE]);
+  my_putstrnr(finfo->sizestr, colsizes[COL_SIZE]);
   my_putchar(' ');
 }
 

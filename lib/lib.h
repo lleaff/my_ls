@@ -9,6 +9,7 @@
 void my_putchar(char c);
 int  my_putstr(char* str);
 int  my_putstrn(char* str, int n);
+int  my_putstrnr(char* str, int n);
 int  my_strlen(char *str);
 void my_put_nbr(int n);
 char *my_readfile(char* filename);

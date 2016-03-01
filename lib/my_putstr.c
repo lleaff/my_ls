@@ -24,3 +24,24 @@ int my_putstrn(char* str, int n)
     }
     return(0);
 }
+
+/* Right-aligned my_putstrn */
+int my_putstrnr(char* str, int n)
+{
+    int i;
+    int len;
+    char c;
+    int offset;
+
+    len = my_strlen(str);
+    offset = n - len;
+    for (i = 0; i < n; i++)
+    {
+      if (i < offset)
+        c = FILL_CHAR;
+      else
+        c = str[i - offset];
+      my_putchar(c);
+    }
+    return(0);
+}
