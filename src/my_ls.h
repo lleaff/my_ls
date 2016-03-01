@@ -23,8 +23,11 @@ typedef struct s_finfo {
 } t_finfo;
 
 t_finfo *finfo_new(char *filename, t_stat *statbuf);
+#ifdef DEBUG
+void debug_finfo_ll(t_ll *files);
+#endif /* DEBUG */
 
-t_ll *dircontent(t_finfo *finfo, t_opts *opts);
+t_ll *dircontent(char *path, t_opts *opts);
 
 char *concat_paths(char *pre, char *post);
 

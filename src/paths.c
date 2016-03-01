@@ -13,7 +13,7 @@ char *concat_paths(char *pre, char *post)
   if ((res = malloc(l_pre + !trailing_slash + l_post + 1)) == NULL)
     return (NULL);
   my_memcpy(res, pre, l_pre);
-  if (trailing_slash)
+  if (!trailing_slash)
     res[l_pre] = '/';
   my_memcpy(res + l_pre + !trailing_slash, post, l_post);
   res[l_pre + !trailing_slash + l_post] = '\0';

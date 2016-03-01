@@ -14,15 +14,15 @@ t_bool filter_name(char *name, t_opts *opts)
   return (true);
 }
 
-t_ll *dircontent(t_finfo *finfo, t_opts *opts)
+t_ll *dircontent(char *path, t_opts *opts)
 {
   DIR *dir;
   t_ll *filenames;
   char *name;
   t_dirent *ent;
 
-  if ((dir = opendir(finfo->filename)) == NULL)
-    return (file_error_ptr(finfo->filename));
+  if ((dir = opendir(path)) == NULL)
+    return (file_error_ptr(path));
   filenames = NULL;
   for(ent = readdir(dir); ent != NULL; ent = readdir(dir))
   {

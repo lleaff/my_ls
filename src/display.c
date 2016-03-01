@@ -5,6 +5,7 @@
 
 void print_dir_header(char *filename)
 {
+  my_putstr("\n");
   my_putstr(filename);
   my_putstr(":\n");
 }
@@ -24,4 +25,6 @@ void display_files(t_ll *files, t_opts *opts)
     else
       print_file(finfo);
   }
+  if (!opts->longlist)
+    my_putchar('\n');
 }
