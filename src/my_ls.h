@@ -8,9 +8,9 @@
 
 #define BIN_NAME "my_ls"
 
-#define FCOLOR_EXECUTABLE FG_MAGENTA
-#define FCOLOR_LINK       FG_BLUE
-#define FCOLOR_DIR        FG_CYAN
+#define FCOLOR_EXECUTABLE FG_IGREEN
+#define FCOLOR_LINK       FG_ICYAN
+#define FCOLOR_DIR        FG_IBLUE
 
 /*------------------------------------------------------------*/
 
