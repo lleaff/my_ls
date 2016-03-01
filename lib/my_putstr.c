@@ -7,7 +7,7 @@ int my_putstr(char* str)
     return (0);
 }
 
-#define FILL_CHAR ' '
+char g_fill_char = ' ';
 
 int my_putstrn(char* str, int n)
 {
@@ -19,7 +19,7 @@ int my_putstrn(char* str, int n)
     {
       if (!end)
         end = str[i] == '\0';
-      c = !end ? str[i] : FILL_CHAR;
+      c = !end ? str[i] : g_fill_char;
       my_putchar(c);
     }
     return(0);
@@ -38,7 +38,7 @@ int my_putstrnr(char* str, int n)
     for (i = 0; i < n; i++)
     {
       if (i < offset)
-        c = FILL_CHAR;
+        c = g_fill_char;
       else
         c = str[i - offset];
       my_putchar(c);

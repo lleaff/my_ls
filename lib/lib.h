@@ -8,6 +8,7 @@
 
 void my_putchar(char c);
 int  my_putstr(char* str);
+extern char g_fill_char;
 int  my_putstrn(char* str, int n);
 int  my_putstrnr(char* str, int n);
 int  my_strlen(char *str);
