@@ -20,6 +20,7 @@ void print_file_long(t_finfo *finfo, int *colsizes)
   print_user(finfo, colsizes);
   print_group(finfo, colsizes);
   print_filesize(finfo, colsizes);
+  print_mod_date(finfo);
   print_filename(finfo);
   my_putchar('\n');
 }

@@ -1,5 +1,6 @@
-#include <time.h>
 #include "my_ls.h"
+
+#define difftime(a, b) ((a) - (b))
 
 int finfo_cmp_names(const void *a, const void *b)
 {

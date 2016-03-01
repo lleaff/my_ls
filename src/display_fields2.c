@@ -1,6 +1,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <time.h>
 #include "my_ls.h"
 #include "groups_and_users.h"
 
@@ -12,5 +13,9 @@ void print_filesize(t_finfo *finfo, int *colsizes)
 
 void print_mod_date(t_finfo *finfo)
 {
-  /* TODO */
+  time_t t;
+
+  t = finfo->stats.st_mtime;
+  print_time(t);
+  my_putchar(' ');
 }

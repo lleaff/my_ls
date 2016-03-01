@@ -53,6 +53,8 @@ void print_links_count(t_finfo *f);
 void print_user(t_finfo *finfo, int *colsizes);
 void print_group(t_finfo *finfo, int *colsizes);
 void print_filesize(t_finfo *finfo, int *colsizes);
+void print_time(time_t t);
+void print_mod_date(t_finfo *finfo);
 
 /*------------------------------------------------------------*/
 
