@@ -47,6 +47,7 @@ void debug_finfo_ll(t_ll *files);
 /*------------------------------------------------------------*/
 
 t_ll *dircontent(char *path, t_opts *opts);
+char get_filetype_char(mode_t m);
 
 t_bool filter_name(char *name, t_opts *opts);
 

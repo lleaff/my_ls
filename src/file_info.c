@@ -46,3 +46,27 @@ void debug_finfo_ll(t_ll *files)
   }
   my_putstr("\n}\n");
 }
+
+char get_filetype_char(mode_t m)
+{
+  int t;
+
+  t = m & S_IFMT;
+  switch (t)
+  {
+    case S_IFREG:
+      return ('-');
+    case S_IFDIR:
+      return ('d');
+    case S_IFLNK:
+      return ('l');
+    case S_IFIFO:
+      return ('p');
+    case S_IFCHR:
+      return ('c');
+    case S_IFBLK:
+      return ('b');
+    default:
+      return ('?');
+  }
+}

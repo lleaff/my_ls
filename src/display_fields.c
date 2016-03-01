@@ -28,7 +28,7 @@ void print_permissions(t_finfo *finfo)
   mode_t m;
 
   m = finfo->stats.st_mode;
-  my_putchar(S_ISDIR(m) ? 'd' : '-');
+  my_putchar(get_filetype_char(m));
   my_putchar(S_IRUSR & m ? 'r' : '-');
   my_putchar(S_IWUSR & m ? 'w' : '-');
   my_putchar(S_IXUSR & m ? 'x' : '-');
