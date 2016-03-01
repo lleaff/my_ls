@@ -24,6 +24,8 @@ typedef struct s_finfo {
 
 t_finfo *finfo_new(char *filename, t_stat *statbuf);
 
+t_ll *dircontent(t_finfo *finfo, t_opts *opts);
+
 /* Display
  *------------------------------------------------------------*/
 #define MAX_COL_SIZE 100
@@ -33,6 +35,7 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf);
 #define COL_SIZE 4
 
 #include "groups_and_users.h"
+void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
 void display_files(t_ll *files, t_opts *opts);
 

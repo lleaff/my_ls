@@ -31,30 +31,39 @@ t_ll *only_folders(t_ll *files, t_opts *opts)
   t_ll *folders;
   t_finfo *finfo;
 
-  finfo = (t_finfo*)files->data;
   noop(opts);/* DEBUG */
   folders = NULL;
   ll_iter(files) {
+    finfo = (t_finfo*)files->data;
     if (S_ISDIR(finfo->stats.st_mode))
       folders = ll_append(folders, ll_new(finfo));
   }
   return (folders);
 }
 
-t_bool my_ls(t_ll *args, t_opts *opts)
+t_bool my_ls(t_ll *filenames, t_opts *opts)
 {
   t_ll *files;
   t_ll *folders;
+  t_finfo *finfo;
 
-  if ((files = get_files_and_folders(args, opts)) == NULL)
+  my_putstr("FILENAMES: ");
+  ll_debug_strings(filenames);
+  my_putstr("_____________________________\n");
+
+  if ((files = get_files_and_folders(filenames, opts)) == NULL)
     return (false);
   folders = only_folders(files, opts);
   display_files(files, opts);
-  noop(folders);/* DEBUG */
-  /*
   if (opts->recursive)
-    ll_iter(folders)
-      my_ls(folders)
-      */
+  {
+    ll_iter(folders) {
+      finfo = (t_finfo*)folders->data;
+      if ((filenames = dircontent(finfo, opts)) == NULL)
+        return (false);
+      print_dir_header(finfo->filename);
+      my_ls(filenames, opts);
+    }
+  }
   return (true);
 }

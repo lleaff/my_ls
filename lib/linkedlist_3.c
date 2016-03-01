@@ -24,6 +24,8 @@ void   ll_sort(t_ll *node, t_comparison_fn cmp)
   t_ll *min;
   t_ll *j;
 
+  if (node == NULL)
+    return ;
   for (min = node; node->next != NULL; node = node->next, min = node)
   {
     for (j = node->next; j != NULL; j = j->next)

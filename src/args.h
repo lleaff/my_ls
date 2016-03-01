@@ -8,7 +8,7 @@
 typedef struct s_opts {
     t_bool longlist;      /* -l */
     t_bool recursive;     /* -R */
-    t_bool reverse;      /* -r */
+    t_bool reverse;       /* -r */
     t_bool flat;          /* -d */
     t_bool sortmodtime;   /* -t */
     t_bool all;           /* -a */
