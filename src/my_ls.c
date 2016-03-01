@@ -7,10 +7,6 @@
 
 t_bool g_first = true;
 
-#ifdef DEBUG
-int infinite_recursion_guard = 0;  /* DEBUG */
-#endif
-
 int get_stats(char *filepath, t_stat *statbuf, t_opts *opts)
 {
   if (opts->dereference)
@@ -65,6 +61,8 @@ void split_files_and_folders(t_ll *entries, t_opts *opts,
 
 /*------------------------------------------------------------*/
 
+#define ONLY_DIRS(files) ((files) == NULL)
+
 t_bool scan_folder(t_ll *files, t_ll *folders, char *path,
                    t_opts *opts, t_bool single_dir)
 {
@@ -76,11 +74,13 @@ t_bool scan_folder(t_ll *files, t_ll *folders, char *path,
   {
     ll_iter(folders) {
       finfo = (t_finfo*)folders->data;
-      new_folder = concat_paths(path, finfo->filename);
+      new_folder = g_first ? finfo->filename :
+                             concat_paths(path, finfo->filename);
       if ((content = dircontent(new_folder, opts)) == NULL)
         continue ;
+      print_dir_header_maybe(single_dir, g_first, ONLY_DIRS(files),
+                             opts, new_folder);
       g_first = false;
-      print_dir_header_maybe(single_dir, opts, new_folder);
       my_ls(content, new_folder, opts);
     }
   }
@@ -97,15 +97,12 @@ t_bool my_ls(t_ll *filenames, char *path, t_opts *opts)
   t_ll *folders;
   t_bool single_dir;
 
-#ifdef DEBUG
-  if (++infinite_recursion_guard > 10) { printf("GUARD\n"); return false; }
-#endif
   single_dir = SINGLE_DIR(filenames, g_first);
   if ((entries = get_fileinfos(filenames, path, opts)) == NULL)
     return (false);
   split_files_and_folders(entries, opts, &files, &folders);
   if (!single_dir)
-    display_files(entries, opts);
+    display_files(g_first ? files : entries, opts);
   if (!scan_folder(files, folders, path, opts, single_dir))
     return (false);
   return (true);

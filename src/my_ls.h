@@ -9,7 +9,7 @@
 #define BIN_NAME "my_ls"
 
 #define FCOLOR_EXECUTABLE FG_MAGENTA
-#define FCOLOR_LINK       FG_YELLOW
+#define FCOLOR_LINK       FG_BLUE
 #define FCOLOR_DIR        FG_CYAN
 
 /*------------------------------------------------------------*/
@@ -57,7 +57,8 @@ t_bool filter_name(char *name, t_opts *opts);
 #define COL_SIZE 4
 
 #include "groups_and_users.h"
-void print_dir_header_maybe(t_bool single_dir, t_opts *o, char *name);
+void print_dir_header_maybe(t_bool sngl, t_bool frst, t_bool only_dirs,
+                            t_opts *o, char *name);
 void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
 void display_files(t_ll *files, t_opts *opts);
