@@ -18,6 +18,7 @@ t_ll*  ll_last(t_ll* node);
 t_ll*  ll_init(t_ll* node);
 
 int    ll_length(t_ll* node);
+int    ll_length_gt(t_ll *node, int n);
 t_ll*  ll_nth(t_ll* node, int n);
 
 int    ll_remove(t_ll** begin, t_ll* toRemove);

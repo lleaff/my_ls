@@ -19,7 +19,7 @@ void ll_debug_strings(t_ll* node)
     my_putstr("\"\n}\n");
 }
 
-void   ll_sort(t_ll *node, t_comparison_fn cmp)
+void ll_sort(t_ll *node, t_comparison_fn cmp)
 {
   t_ll *min;
   t_ll *j;
@@ -34,4 +34,17 @@ void   ll_sort(t_ll *node, t_comparison_fn cmp)
     if (min != node)
       ll_swap(min, node);
   }
+}
+
+int ll_length_gt(t_ll *node, int n)
+{
+  int l;
+
+  for (l = 0; node != NULL; node = node->next)
+  {
+    l++;
+    if (l > n)
+      return (1);
+  }
+  return (0);
 }

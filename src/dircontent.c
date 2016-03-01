@@ -5,15 +5,6 @@
 
 typedef struct dirent t_dirent;
 
-t_bool filter_name(char *name, t_opts *opts)
-{
-  if (!(opts->all || opts->almostall) && name[0] == '.')
-    return (false);
-  if (opts->almostall && (!my_strcmp(name, ".") || !my_strcmp(name, "..")))
-    return (false);
-  return (true);
-}
-
 t_ll *dircontent(char *path, t_opts *opts)
 {
   DIR *dir;

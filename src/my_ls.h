@@ -4,6 +4,7 @@
 #define DEBUG
 
 #define BIN_NAME "my_ls"
+
 #include <sys/stat.h>
 #include <sys/types.h>
 typedef struct stat t_stat;
@@ -12,6 +13,8 @@ typedef struct stat t_stat;
 #include "print.h"
 #include "args.h"
 
+/* File info
+ *------------------------------------------------------------*/
 typedef struct s_finfo {
   char   *filename;
   t_stat stats;
@@ -27,8 +30,11 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf);
 void debug_finfo_ll(t_ll *files);
 #endif /* DEBUG */
 
+/*------------------------------------------------------------*/
+
 t_ll *dircontent(char *path, t_opts *opts);
 
+t_bool filter_name(char *name, t_opts *opts);
 char *concat_paths(char *pre, char *post);
 
 /* Display
@@ -40,6 +46,7 @@ char *concat_paths(char *pre, char *post);
 #define COL_SIZE 4
 
 #include "groups_and_users.h"
+void print_dir_header_maybe(t_bool single_dir, t_opts *o, char *name);
 void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
 void display_files(t_ll *files, t_opts *opts);

@@ -4,9 +4,19 @@
 #include "my_ls.h"
 #include "groups_and_users.h"
 
+#define IS_EXECUTABLE(finfo) ((finfo)->stats.st_mode & S_IXUSR)
+
 void print_filename(t_finfo *finfo)
 {
-  my_putstr(finfo->isdir ? FG_BLUE : "");
+  char *color;
+  
+  if (finfo->isdir)
+    color = FG_BLUE;
+  else if (IS_EXECUTABLE(finfo))
+    color = FG_MAGENTA;
+  else
+    color = "";
+  my_putstr(color);
   my_putstr(finfo->filename);
   my_putstr(COLOR_RESET" ");
 }

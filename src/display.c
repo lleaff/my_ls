@@ -3,6 +3,13 @@
 #include <unistd.h>
 #include "my_ls.h"
 
+void print_dir_header_maybe(t_bool single_dir, t_opts *opts, char *name)
+{
+  if (single_dir)
+    return ;
+  print_dir_header(name);
+}
+
 void print_dir_header(char *filename)
 {
   my_putstr("\n");
