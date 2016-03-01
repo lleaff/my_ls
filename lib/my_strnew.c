@@ -15,3 +15,14 @@ char *my_strnew(char *buffer)
   str[len] = '\0';
   return (str);
 }
+
+char *my_strnnew(char *buffer, int n)
+{
+  char *str;
+
+  if ((str = malloc(n + 1)) == NULL)
+    return (NULL);
+  my_memcpy(str, buffer, n);
+  str[n] = '\0';
+  return (str);
+}

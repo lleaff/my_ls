@@ -8,6 +8,7 @@ Minimal `ls` implementation using only these functions from the standard library
  * `getpwuid`
  * `getgrgid`
  * `getcwd`
+ * `time`
  * `ctime`
  * `readlink`
  * `getopt`

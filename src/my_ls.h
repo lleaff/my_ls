@@ -1,9 +1,18 @@
 #ifndef MY_LS_H
 #define MY_LS_H
 
+/* Configuration
+ *------------------------------------------------------------*/
+
 #define DEBUG
 
 #define BIN_NAME "my_ls"
+
+#define FCOLOR_EXECUTABLE FG_MAGENTA
+#define FCOLOR_LINK       FG_YELLOW
+#define FCOLOR_DIR        FG_CYAN
+
+/*------------------------------------------------------------*/
 
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -17,15 +26,18 @@ typedef struct stat t_stat;
  *------------------------------------------------------------*/
 typedef struct s_finfo {
   char   *filename;
+  char   *path;
   t_stat stats;
   t_bool isdir;
+  t_bool islink;
+  char   *link;
   char   *user;
   char   *group;
   int    size;
   char   *sizestr;
 } t_finfo;
 
-t_finfo *finfo_new(char *filename, t_stat *statbuf);
+t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path);
 #ifdef DEBUG
 void debug_finfo_ll(t_ll *files);
 #endif /* DEBUG */
@@ -66,6 +78,7 @@ void print_group(t_finfo *finfo, int *colsizes);
 void print_filesize(t_finfo *finfo, int *colsizes);
 void print_time(time_t t);
 void print_mod_date(t_finfo *finfo);
+void print_link_info(t_finfo *finfo);
 
 /*------------------------------------------------------------*/
 

@@ -10,15 +10,17 @@ void print_filename(t_finfo *finfo)
 {
   char *color;
   
-  if (finfo->isdir)
-    color = FG_BLUE;
+  if (finfo->islink)
+    color = FCOLOR_LINK;
+  else if (finfo->isdir)
+    color = FCOLOR_DIR;
   else if (IS_EXECUTABLE(finfo))
-    color = FG_MAGENTA;
+    color = FCOLOR_EXECUTABLE;
   else
     color = "";
   my_putstr(color);
   my_putstr(finfo->filename);
-  my_putstr(COLOR_RESET" ");
+  my_putstr(COLOR_RESET"");
 }
 
 void print_permissions(t_finfo *finfo)

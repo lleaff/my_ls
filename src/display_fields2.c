@@ -1,6 +1,3 @@
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include <time.h>
 #include "my_ls.h"
 #include "groups_and_users.h"
@@ -18,4 +15,12 @@ void print_mod_date(t_finfo *finfo)
   t = finfo->stats.st_mtime;
   print_time(t);
   my_putchar(' ');
+}
+
+void print_link_info(t_finfo *finfo)
+{
+  if (!finfo->islink)
+    return ;
+  my_putstr(" -> ");
+  my_putstr(finfo->link);
 }

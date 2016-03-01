@@ -22,5 +22,6 @@ void print_file_long(t_finfo *finfo, int *colsizes)
   print_filesize(finfo, colsizes);
   print_mod_date(finfo);
   print_filename(finfo);
+  print_link_info(finfo);
   my_putchar('\n');
 }

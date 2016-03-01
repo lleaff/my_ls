@@ -1,3 +1,5 @@
+#define _GNU_SOURCE /* needed for lstat and readlink with gcc */
+
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/unistd.h>
@@ -8,6 +10,14 @@ t_bool g_first = true;
 #ifdef DEBUG
 int infinite_recursion_guard = 0;  /* DEBUG */
 #endif
+
+int get_stats(char *filepath, t_stat *statbuf, t_opts *opts)
+{
+  if (opts->dereference)
+    return (stat(filepath, statbuf));
+  else
+    return (lstat(filepath, statbuf));
+}
 
 t_ll *get_fileinfos(t_ll *filenames, char *path, t_opts *opts)
 {
@@ -25,11 +35,11 @@ t_ll *get_fileinfos(t_ll *filenames, char *path, t_opts *opts)
   ll_iter(filenames) {
     filename = (char*)filenames->data;
     filepath = concat_paths(path, filename);
-    if (stat(filepath, &statbuf) == -1) {
+    if (get_stats(filepath, &statbuf, opts) == -1) {
       err = !file_error(filename);
       continue ;
     }
-    finfo_tmp = finfo_new(filename, &statbuf);
+    finfo_tmp = finfo_new(filename, &statbuf, path);
     files = ll_append(files, ll_new(finfo_tmp));
   }
   sort_files(files, opts);
