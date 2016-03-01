@@ -1,4 +1,4 @@
-#include "groups_and_users.h"
+#include "longlist_info.h"
 #include "pwd.h"
 #include "grp.h"
 
@@ -79,5 +79,23 @@ t_bool fill_user_and_group(t_ll *files, int *colsizes)
   }
   colsizes[COL_USER]  = MIN(MAX_COL_SIZE, max_user_len);
   colsizes[COL_GROUP] = MIN(MAX_COL_SIZE, max_group_len);
+  return (true);
+}
+
+t_bool fill_hardlink_count(t_ll *files, int *colsizes)
+{
+  int max_links_len;
+  int len;
+  t_finfo *finfo;
+
+  max_links_len = 0;
+  ll_iter(files) {
+    finfo = (t_finfo*)files->data;
+    finfo->hardlinks = finfo->stats.st_nlink;
+    finfo->hardlinksstr = my_itoa(finfo->hardlinks);
+    len = my_strlen(finfo->hardlinksstr);
+    max_links_len = MAX(max_links_len, len);
+  }
+  colsizes[COL_HARDLINKS] = max_links_len;
   return (true);
 }

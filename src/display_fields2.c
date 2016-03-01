@@ -1,6 +1,6 @@
 #include <time.h>
 #include "my_ls.h"
-#include "groups_and_users.h"
+#include "longlist_info.h"
 
 void print_filesize(t_finfo *finfo, int *colsizes)
 {

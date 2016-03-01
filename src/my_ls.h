@@ -33,6 +33,8 @@ typedef struct s_finfo {
   char   *link;
   char   *user;
   char   *group;
+  int    hardlinks;
+  char   *hardlinksstr;
   int    size;
   char   *sizestr;
 } t_finfo;
@@ -52,11 +54,13 @@ t_bool filter_name(char *name, t_opts *opts);
  *------------------------------------------------------------*/
 #define MAX_COL_SIZE 100
 #define COL_COUNT 8
+
+#define COL_HARDLINKS 1
 #define COL_USER 2
 #define COL_GROUP 3
 #define COL_SIZE 4
 
-#include "groups_and_users.h"
+#include "longlist_info.h"
 void print_dir_header_maybe(t_bool sngl, t_bool frst, t_bool only_dirs,
                             t_opts *o, char *name);
 void print_dir_header(char *filename);
@@ -73,7 +77,7 @@ void sort_files(t_ll *files, t_opts *opts);
 
 void print_filename(t_finfo *f);
 void print_permissions(t_finfo *f);
-void print_links_count(t_finfo *f);
+void print_links_count(t_finfo *f, int *colsizes);
 void print_user(t_finfo *finfo, int *colsizes);
 void print_group(t_finfo *finfo, int *colsizes);
 void print_filesize(t_finfo *finfo, int *colsizes);

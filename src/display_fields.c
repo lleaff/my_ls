@@ -2,7 +2,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include "my_ls.h"
-#include "groups_and_users.h"
+#include "longlist_info.h"
 
 #define IS_EXECUTABLE(finfo) ((finfo)->stats.st_mode & S_IXUSR)
 
@@ -41,9 +41,9 @@ void print_permissions(t_finfo *finfo)
   my_putchar(' ');
 }
 
-void print_links_count(t_finfo *f)
+void print_links_count(t_finfo *f, int *colsizes)
 {
-  my_put_nbr(f->stats.st_nlink);
+  my_putstrnr(f->hardlinksstr, colsizes[COL_HARDLINKS]);
   my_putchar(' ');
 }
 

@@ -22,5 +22,6 @@ t_ll *dircontent(char *path, t_opts *opts)
       continue ;
     filenames = ll_append(filenames, ll_new_data(name, my_strlen(name) + 1));
   }
+  closedir(dir);
   return (filenames);
 }
