@@ -3,7 +3,9 @@
 #include <sys/unistd.h>
 #include "my_ls.h"
 
-t_ll *get_files_and_folders(t_ll *filenames, t_opts *opts)
+t_bool g_first = true;
+
+t_ll *get_files_and_folders(t_ll *filenames, char *path, t_opts *opts)
 {
   t_stat statbuf;
   t_bool err;
@@ -41,7 +43,7 @@ t_ll *only_folders(t_ll *files, t_opts *opts)
   return (folders);
 }
 
-t_bool my_ls(t_ll *filenames, t_opts *opts)
+t_bool my_ls(t_ll *filenames, char *path, t_opts *opts)
 {
   t_ll *files;
   t_ll *folders;
@@ -51,7 +53,7 @@ t_bool my_ls(t_ll *filenames, t_opts *opts)
   ll_debug_strings(filenames);
   my_putstr("_____________________________\n");
 
-  if ((files = get_files_and_folders(filenames, opts)) == NULL)
+  if ((files = get_files_and_folders(filenames, path, opts)) == NULL)
     return (false);
   folders = only_folders(files, opts);
   display_files(files, opts);
@@ -62,7 +64,7 @@ t_bool my_ls(t_ll *filenames, t_opts *opts)
       if ((filenames = dircontent(finfo, opts)) == NULL)
         return (false);
       print_dir_header(finfo->filename);
-      my_ls(filenames, opts);
+      my_ls(filenames, concat_paths(path, finfo->filename), opts);
     }
   }
   return (true);

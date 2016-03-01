@@ -26,6 +26,8 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf);
 
 t_ll *dircontent(t_finfo *finfo, t_opts *opts);
 
+char *concat_paths(char *pre, char *post);
+
 /* Display
  *------------------------------------------------------------*/
 #define MAX_COL_SIZE 100
@@ -59,6 +61,6 @@ void print_mod_date(t_finfo *finfo);
 /*------------------------------------------------------------*/
 
 t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv);
-t_bool my_ls(t_ll *args, t_opts *opts);
+t_bool my_ls(t_ll *args, char *path, t_opts *opts);
 
 #endif /* MY_LS_H */
