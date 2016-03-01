@@ -68,9 +68,9 @@ t_bool scan_folder(t_ll *files, t_ll *folders, char *path,
       finfo = (t_finfo*)folders->data;
       new_folder = concat_paths(path, finfo->filename);
       if ((content = dircontent(new_folder, opts)) == NULL)
-        return (false);
-      print_dir_header_maybe(single_dir, opts, new_folder);
+        continue ;
       g_first = false;
+      print_dir_header_maybe(single_dir, opts, new_folder);
       my_ls(content, new_folder, opts);
     }
   }
@@ -93,7 +93,7 @@ t_bool my_ls(t_ll *filenames, char *path, t_opts *opts)
   single_dir = SINGLE_DIR(filenames, g_first);
   if ((entries = get_fileinfos(filenames, path, opts)) == NULL)
     return (false);
-    split_files_and_folders(entries, opts, &files, &folders);
+  split_files_and_folders(entries, opts, &files, &folders);
   if (!single_dir)
     display_files(entries, opts);
   if (!scan_folder(files, folders, path, opts, single_dir))

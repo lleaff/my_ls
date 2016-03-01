@@ -28,6 +28,8 @@ void my_strpush(char* dest, char* to_push);
 void my_strnpush(char* dest, char* toPush, int n);
 char *my_strcatnew(char* pre, char* post);
 char *my_strnew(char *buffer);
+/* Paths */
+char *concat_paths(char *pre, char *post);
 
 #ifdef DEBUG
 #include "debug.h"

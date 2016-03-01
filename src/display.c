@@ -5,7 +5,7 @@
 
 void print_dir_header_maybe(t_bool single_dir, t_opts *opts, char *name)
 {
-  if (single_dir)
+  if (single_dir && !opts->recursive)
     return ;
   print_dir_header(name);
 }
