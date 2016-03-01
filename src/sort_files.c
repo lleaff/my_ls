@@ -15,7 +15,7 @@ int finfo_cmp_names_reverse(const void *a, const void *b)
 
 int finfo_cmp_modtimes(const void *a, const void *b)
 {
-  return (difftime(((t_finfo*)a)->stats.st_mtime,
+  return (-1 * difftime(((t_finfo*)a)->stats.st_mtime,
                    ((t_finfo*)b)->stats.st_mtime));
 }
 
