@@ -36,20 +36,22 @@ void print_files_long(t_ll* files)
 void print_filename_cols(t_finfo *finfo, int colsize)
 {
   print_filename(finfo);
-  my_putstrn("", colsize - my_strlen(finfo->filename));
+  if (colsize)
+    my_putstrn("", colsize - my_strlen(finfo->filename));
+  else
+    my_putchar('\n');
 }
 
 void print_files_cols(t_ll *files)
 {
-  t_ll *cols;
-  int c;
+  t_ll *cols; int c;
   int i;
 
   cols = find_cols(files);
   c = ll_length(cols);
   for (i = 0; files != NULL; files = files->next)
   {
-    print_filename_cols((t_finfo*)files->data, COLSIZE_AT(i));
+    print_filename_cols((t_finfo*)files->data, c ? COLSIZE_AT(i) : 0);
     if (i >= c - 1)
     {
       i = 0;

@@ -69,7 +69,5 @@ t_ll *find_cols(t_ll *files)
   if (one_liner(files, term_cols, &cols))
     return (cols);
   cols = find_cols_rec(files, 2, term_cols);
-  if (cols == NULL)
-    cols = ll_new_data(&term_cols, sizeof(int));
   return (cols);
 }
