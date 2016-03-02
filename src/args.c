@@ -37,7 +37,7 @@ t_bool set_opt(char c, t_opts *opts)
 
     if ((i = char_in_str(c, OPTION_LIST)) == -1)
         return (false);
-    *(t_bool*)(opts + g_opts_offsets[i]) = true;
+    *((t_bool*)((char*)opts + g_opts_offsets[i])) = true;
     return (true);
 }
 
@@ -65,6 +65,7 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
     args = ll_append(args, ll_new(argv[i]));
   *o_args = args;
   *o_opts = opts;
+
   return (true);
 }
 

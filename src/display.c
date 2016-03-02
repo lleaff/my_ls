@@ -33,6 +33,12 @@ void print_files_long(t_ll* files)
 
 #define COLSIZE_AT(x) (*(int*)(ll_nth(cols, (x) % c)->data))
 
+void print_filename_cols(t_finfo *finfo, int colsize)
+{
+  print_filename(finfo);
+  my_putstrn("", colsize - my_strlen(finfo->filename));
+}
+
 void print_files_cols(t_ll *files)
 {
   t_ll *cols;
@@ -43,11 +49,11 @@ void print_files_cols(t_ll *files)
   c = ll_length(cols);
   for (i = 0; files != NULL; files = files->next)
   {
-    my_putstrn(FINFO_LL_FILENAME(files), COLSIZE_AT(i));
+    print_filename_cols((t_finfo*)files->data, COLSIZE_AT(i));
     if (i >= c - 1)
     {
       i = 0;
-      my_putchar('\n');
+      my_putchar(files->next != NULL ? '\n' : '\0');
     }
     else
     {
@@ -55,7 +61,6 @@ void print_files_cols(t_ll *files)
       i++;
     }
   }
-  
   my_putchar('\n');
 }
 
