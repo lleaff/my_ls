@@ -8,7 +8,7 @@
 
 #define BIN_NAME "my_ls"
 
-#define FCOLOR_EXECUTABLE FG_IGREEN
+#define FCOLOR_EXECUTABLE FG_RED
 #define FCOLOR_LINK       FG_ICYAN
 #define FCOLOR_DIR        FG_IBLUE
 
@@ -21,6 +21,8 @@ typedef struct stat t_stat;
 #include "lib.h"
 #include "print.h"
 #include "args.h"
+
+int get_window_columns();
 
 /* File info
  *------------------------------------------------------------*/
