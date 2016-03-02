@@ -105,5 +105,6 @@ t_bool my_ls(t_ll *filenames, char *path, t_opts *opts)
     display_files(g_first ? files : entries, opts);
   if (!scan_folder(files, folders, path, opts, single_dir))
     return (false);
+  free_entries(entries, files, folders);
   return (true);
 }

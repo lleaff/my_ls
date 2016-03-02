@@ -31,7 +31,9 @@ t_ll*  ll_search(t_ll* node, void* value, int (*cmp)(void*, void*));
 void   ll_swap(t_ll* node1, t_ll* node2);
 t_ll*  ll_copy(t_ll* node);
 t_ll*  ll_copy_data(t_ll* node, int size);
+
 void   ll_free(t_ll* node);
+void   ll_free_nodata(t_ll* node);
 
 void   ll_sort(t_ll *node, t_comparison_fn);
 

@@ -99,4 +99,6 @@ void print_link_info(t_finfo *finfo);
 t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv);
 t_bool my_ls(t_ll *args, char *path, t_opts *opts);
 
+void free_entries(t_ll *entries, t_ll *files, t_ll *folders);
+
 #endif /* MY_LS_H */

@@ -28,16 +28,6 @@ t_ll* ll_from_arr(int elSize, int count, void* array)
     return begin;
 }
 
-void ll_free(t_ll* node)
-{
-    if (node)
-    {
-        ll_free(node->next);
-        free(node->data);
-        free(node);
-    }
-}
-
 t_ll* ll_nth(t_ll* node, int n)
 {
     int i;
