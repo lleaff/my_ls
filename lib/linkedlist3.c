@@ -12,13 +12,6 @@ void ll_print_strings(t_ll* node, char *delim)
     }
 }
 
-void ll_debug_strings(t_ll* node)
-{
-    my_putstr("DEBUG(t_ll*) {\n\"");
-    ll_print_strings(node, "\",\n\"");
-    my_putstr("\"\n}\n");
-}
-
 void ll_sort(t_ll *node, t_comparison_fn cmp)
 {
   t_ll *min;

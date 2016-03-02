@@ -12,6 +12,8 @@
 #define FCOLOR_LINK       FG_ICYAN
 #define FCOLOR_DIR        FG_IBLUE
 
+#define GUTTER_SIZE 2
+
 /*------------------------------------------------------------*/
 
 #include <sys/stat.h>
@@ -22,6 +24,7 @@ typedef struct stat t_stat;
 #include "print.h"
 #include "args.h"
 
+t_bool columns_too_large(t_ll *lengths, int width);
 int get_window_columns();
 
 /* File info
@@ -42,6 +45,8 @@ typedef struct s_finfo {
 } t_finfo;
 
 t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path);
+#define FINFO_LL_FILENAME(f) (((t_finfo*)(f)->data)->filename)
+
 #ifdef DEBUG
 void debug_finfo_ll(t_ll *files);
 #endif /* DEBUG */
@@ -68,6 +73,7 @@ void print_dir_header_maybe(t_bool sngl, t_bool frst, t_bool only_dirs,
                             t_opts *o, char *name);
 void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
+t_ll *find_cols(t_ll *files);
 void display_files(t_ll *files, t_opts *opts);
 
 t_bool fill_longlist_info(t_ll *files, int *colsizes);

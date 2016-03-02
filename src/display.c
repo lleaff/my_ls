@@ -19,23 +19,53 @@ void print_dir_header(char *filename)
   my_putstr(":\n");
 }
 
-void display_files(t_ll *files, t_opts *opts)
+void print_files_long(t_ll* files)
 {
-  t_finfo* finfo;
   int colsizes[COL_COUNT];
+  t_finfo *finfo;
 
-  if (files == NULL)
-    return ;
-  if (opts->longlist)
-    fill_longlist_info(files, colsizes);
-
+  fill_longlist_info(files, colsizes);
   ll_iter(files) {
     finfo = (t_finfo*)files->data;
-    if (opts->longlist)
       print_file_long(finfo, colsizes);
-    else
-      print_file(finfo);
   }
-  if (!opts->longlist)
-    my_putchar('\n');
+}
+
+#define COLSIZE_AT(x) (*(int*)(ll_nth(cols, (x) % c)->data))
+
+void print_files_cols(t_ll *files)
+{
+  t_ll *cols;
+  int c;
+  int i;
+
+  cols = find_cols(files);
+  c = ll_length(cols);
+  for (i = 0; files != NULL; files = files->next)
+  {
+    my_putstrn(FINFO_LL_FILENAME(files), COLSIZE_AT(i));
+    if (i >= c - 1)
+    {
+      i = 0;
+      my_putchar('\n');
+    }
+    else
+    {
+      print_gutter();
+      i++;
+    }
+  }
+  
+  my_putchar('\n');
+}
+
+void display_files(t_ll *files, t_opts *opts)
+{
+  if (files == NULL)
+    return ;
+
+  if (opts->longlist)
+    print_files_long(files);
+  else
+    print_files_cols(files);
 }

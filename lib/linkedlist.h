@@ -12,7 +12,9 @@ typedef struct s_ll {
 } t_ll;
 
 t_ll*  ll_new(void* data);
+t_ll*  ll_new_n(void* data, int n);
 t_ll*  ll_new_data(void* data, int size);
+t_ll*  ll_new_data_n(void* data, int size, int n);
 
 t_ll*  ll_last(t_ll* node);
 t_ll*  ll_init(t_ll* node);
@@ -33,9 +35,13 @@ void   ll_free(t_ll* node);
 
 void   ll_sort(t_ll *node, t_comparison_fn);
 
+t_ll*  ll_map(t_ll *node, void*(f)(t_ll* node));
+void*  ll_foldr(t_ll *node, void*(f)(void* acc, t_ll* node), void *start);
+
 void   ll_print_strings(t_ll* node, char *delim);
 #ifdef DEBUG
 void   ll_debug_strings(t_ll* node);
+void   ll_debug_ints(t_ll* node);
 #endif /* DEBUG */
 
 #define ll_iter(node) \
