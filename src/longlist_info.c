@@ -2,22 +2,6 @@
 #include "pwd.h"
 #include "grp.h"
 
-#define BUFFSIZE 500
-
-/*int max_group_l(t_ll *files)
-{
-  int max;
-  int len;
-
-  max = 0;
-  ll_iter(files) {
-    len = my_strlen(((t_finfo*)files->data)->group);
-    if (len > max)
-      max = len;
-  }
-  return (max);
-}  */
-
 int fill_group(t_finfo *f)
 {
   struct group *grp;
@@ -30,21 +14,6 @@ int fill_group(t_finfo *f)
   f->group = gr_name;
   return (my_strlen(gr_name));
 }
-
-/*
-int max_user_l(t_ll *files)
-{
-  int max;
-  int len;
-
-  max = 0;
-  ll_iter(files) {
-    len = my_strlen(((t_finfo*)files->data)->user);
-    if (len > max)
-      max = len;
-  }
-  return (max);
-}  */
 
 int fill_user(t_finfo *f)
 {

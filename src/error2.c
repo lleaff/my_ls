@@ -29,16 +29,3 @@ void *file_error_ptr(char *f)
   file_error(f);
   return (NULL);
 }
-
-/*
-t_bool file_error(char *f)
-{
-  switch (errno) {
-    case ENOENT:
-      return (print_fserr("cannot access ", f, "No such file or directory"));
-    default:
-      return (print_fserr("Error with file ", f, ""));
-  }
-  return (false);
-}
-*/

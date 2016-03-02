@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <getopt.h>
+#include <stddef.h> /* offsetof() */
 #include "my_ls.h"
 
 t_opts *opts_new()
@@ -19,30 +20,25 @@ t_opts *opts_new()
   return (opts);
 }
 
+static size_t g_opts_offsets[] = {
+    offsetof(struct s_opts, longlist),
+    offsetof(struct s_opts, recursive),
+    offsetof(struct s_opts, reverse),
+    offsetof(struct s_opts, flat),
+    offsetof(struct s_opts, sortmodtime),
+    offsetof(struct s_opts, all),
+    offsetof(struct s_opts, almostall),
+    offsetof(struct s_opts, dereference),
+};
+
 t_bool set_opt(char c, t_opts *opts)
 {
-  switch (c)
-  {
-    case 'l':
-      opts->longlist = true;     break;
-    case 'R':
-      opts->recursive = true;    break;
-    case 'r':
-      opts->reverse = true;      break;
-    case 'd':
-      opts->flat = true;         break;
-    case 't':
-      opts->sortmodtime = true;  break;
-    case 'a':
-      opts->all = true;          break;
-    case 'A':
-      opts->almostall = true;    break;
-    case 'L':
-      opts->dereference = true;  break;
-    default:
-      return (false);
-  }
-  return (true);
+    int i;
+
+    if ((i = char_in_str(c, OPTION_LIST)) == -1)
+        return (false);
+    *(t_bool*)(opts + g_opts_offsets[i]) = true;
+    return (true);
 }
 
 t_bool unknown_opt_err(char c)

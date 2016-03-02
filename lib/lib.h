@@ -6,31 +6,32 @@
 #include "bool.h"
 #include "colors.h"
 
-void my_putchar(char c);
-int  my_putstr(char* str);
+void   my_putchar(char c);
+int    my_putstr(char* str);
 extern char g_fill_char;
-int  my_putstrn(char* str, int n);
-int  my_putstrnr(char* str, int n);
-int  my_strlen(char *str);
-void my_put_nbr(int n);
-char *my_readfile(char* filename);
-char *my_readline();
-char *my_readnchars(int n);
-char *my_itoa(int n);
-int  my_getnbr(char *str);
-int  is_int(char *str);
-int  str_eq(char* str1, char* str2);
-int  my_strcmp(char *s1, char *s2);
-int  my_strncmp(char *s1, char *s2, int n);
-char *my_strstr(char *str, char *to_find);
-char **my_str_to_wordtab(char *str);
-void my_strpush(char* dest, char* to_push);
-void my_strnpush(char* dest, char* toPush, int n);
-char *my_strcatnew(char* pre, char* post);
-char *my_strnew(char *buffer);
-char *my_strnnew(char *buffer, int length);
+int    my_putstrn(char* str, int n);
+int    my_putstrnr(char* str, int n);
+int    my_strlen(char *str);
+void   my_put_nbr(int n);
+char   *my_readfile(char* filename);
+char   *my_readline();
+char   *my_readnchars(int n);
+char   *my_itoa(int n);
+int    my_getnbr(char *str);
+int    is_int(char *str);
+int    str_eq(char* str1, char* str2);
+int    my_strcmp(char *s1, char *s2);
+int    my_strncmp(char *s1, char *s2, int n);
+int    char_in_str(char c, char *str);
+char   *my_strstr(char *str, char *to_find);
+char   **my_str_to_wordtab(char *str);
+void   my_strpush(char* dest, char* to_push);
+void   my_strnpush(char* dest, char* toPush, int n);
+char   *my_strcatnew(char* pre, char* post);
+char   *my_strnew(char *buffer);
+char   *my_strnnew(char *buffer, int length);
 /* Paths */
-char *concat_paths(char *pre, char *post);
+char   *concat_paths(char *pre, char *post);
 
 #ifdef DEBUG
 #include "debug.h"
