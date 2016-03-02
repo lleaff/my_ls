@@ -52,7 +52,7 @@ int fill_user(t_finfo *f)
   int uid;
   char *us_name;
 
-  uid = f->stats.st_gid;
+  uid = f->stats.st_uid;
   pwd = getpwuid(uid);
   us_name = (pwd != NULL) ? pwd->pw_name : my_itoa(uid);
   f->user = us_name;
