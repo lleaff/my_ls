@@ -47,26 +47,36 @@ void debug_finfo_ll(t_ll *files)
   my_putstr("\n}\n");
 }
 
+/* Filetypes
+ *------------------------------------------------------------*/
+
+#define FILETYPES_COUNT 6
+static int filetype_masks[FILETYPES_COUNT] = {
+    S_IFREG,
+    S_IFDIR,
+    S_IFLNK,
+    S_IFIFO,
+    S_IFCHR,
+    S_IFBLK
+};
+
+static char filetype_chars[FILETYPES_COUNT] = {
+      '-',
+      'd',
+      'l',
+      'p',
+      'c',
+      'b'
+};
+
 char get_filetype_char(mode_t m)
 {
   int t;
+  int i;
 
   t = m & S_IFMT;
-  switch (t)
-  {
-    case S_IFREG:
-      return ('-');
-    case S_IFDIR:
-      return ('d');
-    case S_IFLNK:
-      return ('l');
-    case S_IFIFO:
-      return ('p');
-    case S_IFCHR:
-      return ('c');
-    case S_IFBLK:
-      return ('b');
-    default:
+  if ((i = int_in_arr(t, filetype_masks, FILETYPES_COUNT)) == -1)
       return ('?');
-  }
+  else
+      return filetype_chars[i];
 }

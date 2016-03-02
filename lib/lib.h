@@ -6,6 +6,7 @@
 #include "bool.h"
 #include "colors.h"
 
+int    int_in_arr(int n, int *arr, int length);
 void   my_putchar(char c);
 int    my_putstr(char* str);
 extern char g_fill_char;
