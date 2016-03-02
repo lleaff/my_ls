@@ -23,6 +23,7 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path)
 
   if ((info = malloc(sizeof(*info))) == NULL)
     return (fail_ptr("f_new: malloc failed.\n"));
+  zeroify(info);
 
   info->filename = filename;
   info->stats = *statbuf;
@@ -34,6 +35,18 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path)
   if (is_link)
     info->link = link_destination(concat_paths(path, filename));
   return (info);
+}
+
+void finfo_free(t_finfo *finfo)
+{
+  free(finfo->filename);
+  free(finfo->path);
+  free(finfo->link);
+  free(finfo->user);
+  free(finfo->group);
+  free(finfo->hardlinksstr);
+  free(finfo->sizestr);
+  free(finfo);
 }
 
 void debug_finfo_ll(t_ll *files)

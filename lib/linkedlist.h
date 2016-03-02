@@ -39,6 +39,7 @@ void   ll_sort(t_ll *node, t_comparison_fn);
 
 t_ll*  ll_map(t_ll *node, void*(f)(t_ll* node));
 void*  ll_foldr(t_ll *node, void*(f)(void* acc, t_ll* node), void *start);
+void   ll_foreach(t_ll *node, void (f)(void* data, t_ll* node, int i));
 
 void   ll_print_strings(t_ll* node, char *delim);
 #ifdef DEBUG

@@ -45,6 +45,8 @@ typedef struct s_finfo {
 } t_finfo;
 
 t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path);
+void finfo_free(t_finfo *finfo);
+
 #define FINFO_LL_FILENAME(f) (((t_finfo*)(f)->data)->filename)
 
 #ifdef DEBUG
@@ -100,5 +102,7 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv);
 t_bool my_ls(t_ll *args, char *path, t_opts *opts);
 
 void free_entries(t_ll *entries, t_ll *files, t_ll *folders);
+
+#define zeroify(ptr) do { my_memset(ptr, 0, sizeof(*ptr)); } while (0)
 
 #endif /* MY_LS_H */
