@@ -28,6 +28,8 @@ void sort_files(t_ll *files)
 {
   int (*cmp)(const void*, const void*);
 
+  if (g_opts->nosort)
+      return ;
   if (g_opts->sortmodtime)
     cmp = g_opts->reverse ? finfo_cmp_modtimes_reverse : finfo_cmp_modtimes;
   else

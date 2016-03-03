@@ -9,16 +9,7 @@ t_opts *opts_new()
 
   if ((opts = malloc(sizeof(t_opts))) == NULL)
     return (fail_ptr("opts_new: \"opts\" malloc failed."));
-  opts->longlist      = false;
-  opts->recursive     = false;
-  opts->reverse       = false;
-  opts->flat          = false;
-  opts->sortmodtime   = false;
-  opts->all           = false;
-  opts->almostall     = false;
-  opts->dereference   = false;
-  opts->colorize      = false;
-  opts->longlistgroup = false;
+  zeroify(opts);
   return (opts);
 }
 
@@ -33,6 +24,7 @@ static size_t g_opts_offsets[] = {
     offsetof(struct s_opts, dereference),
     offsetof(struct s_opts, colorize),
     offsetof(struct s_opts, longlistgroup),
+    offsetof(struct s_opts, nosort),
 };
 
 t_bool set_opt(char c, t_opts *opts)
@@ -70,6 +62,8 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
 
   if (opts->longlistgroup)
       opts->longlist = true;
+  if (opts->nosort)
+      opts->all = true;
   *o_args = args;
   *o_opts = opts;
   return (true);
