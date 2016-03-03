@@ -18,7 +18,8 @@ void print_file_long(t_finfo *finfo, int *colsizes)
 {
   print_permissions(finfo);
   print_links_count(finfo, colsizes);
-  print_user(finfo, colsizes);
+  if (!g_opts->longlistgroup)
+      print_user(finfo, colsizes);
   print_group(finfo, colsizes);
   print_filesize(finfo, colsizes);
   print_mod_date(finfo);

@@ -30,25 +30,29 @@ int fill_user(t_finfo *f)
 
 t_bool fill_user_and_group(t_ll *files, int *colsizes)
 {
-  t_finfo *finfo;
-  int max_user_len;
-  int max_group_len;
-  int l;
+    t_finfo *finfo;
+    int max_user_len;
+    int max_group_len;
+    int l;
 
-  max_user_len = 0;
-  max_group_len = 0;
-  ll_iter(files) {
-    finfo = (t_finfo*)files->data;
-    l = fill_user(finfo);
-    if (l > max_user_len)
-      max_user_len = l;
-    l = fill_group(finfo);
-    if (l > max_group_len)
-      max_group_len = l;
-  }
-  colsizes[COL_USER]  = MIN(MAX_COL_SIZE, max_user_len);
-  colsizes[COL_GROUP] = MIN(MAX_COL_SIZE, max_group_len);
-  return (true);
+    max_user_len = 0;
+    max_group_len = 0;
+    ll_iter(files) {
+        finfo = (t_finfo*)files->data;
+        if (!g_opts->longlistgroup)
+        {
+            l = fill_user(finfo);
+            if (l > max_user_len)
+                max_user_len = l;
+        }
+        l = fill_group(finfo);
+        if (l > max_group_len)
+            max_group_len = l;
+    }
+    if (!g_opts->longlistgroup)
+        colsizes[COL_USER]  = MIN(MAX_COL_SIZE, max_user_len);
+    colsizes[COL_GROUP] = MIN(MAX_COL_SIZE, max_group_len);
+    return (true);
 }
 
 t_bool fill_hardlink_count(t_ll *files, int *colsizes)

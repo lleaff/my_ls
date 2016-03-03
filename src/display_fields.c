@@ -18,9 +18,9 @@ void print_filename(t_finfo *finfo)
     color = FCOLOR_EXECUTABLE;
   else
     color = "";
-  my_putstr(color);
+  my_putstr(g_opts->colorize ? color : "");
   my_putstr(finfo->filename);
-  my_putstr(COLOR_RESET"");
+  my_putstr(g_opts->colorize ? COLOR_RESET : "");
 }
 
 void print_permissions(t_finfo *finfo)

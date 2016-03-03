@@ -15,16 +15,16 @@ void my_puterr(char *msg)
 
 int fail(char *msg)
 {
-    my_puterr(FG_RED);
+    my_puterr(g_opts->colorize ? FG_RED : "");
     my_puterr(msg);
-    my_puterr(COLOR_RESET);
+    my_puterr(g_opts->colorize ? COLOR_RESET : "");
     return (0);
 }
 
 void *fail_ptr(char *msg)
 {
-    my_puterr(FG_RED);
+    my_puterr(g_opts->colorize ? FG_RED : "");
     my_puterr(msg);
-    my_puterr(COLOR_RESET);
+    my_puterr(g_opts->colorize ? COLOR_RESET : "");
     return (NULL);
 }
