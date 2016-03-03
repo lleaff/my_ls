@@ -79,6 +79,7 @@ void print_files_cols(t_ll *files)
     }
   }
   my_putchar('\n');
+  ll_free(cols);
 }
 
 void display_files(t_ll *files)
