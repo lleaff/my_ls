@@ -77,6 +77,7 @@ void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
 t_ll *find_cols(t_ll *files);
 void display_files(t_ll *files, t_opts *opts);
+void display_total_blocks(t_ll *files);
 
 t_bool fill_longlist_info(t_ll *files, int *colsizes);
 void print_file(t_finfo *finfo);

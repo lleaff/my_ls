@@ -102,6 +102,8 @@ t_bool my_ls(t_ll *filenames, char *path, t_opts *opts)
   single_dir = SINGLE_DIR(filenames, g_first);
   if ((entries = get_fileinfos(filenames, path, opts)) == NULL)
     return (false);
+  if (opts->longlist && !g_first)
+      display_total_blocks(entries);
   split_files_and_folders(entries, opts, &files, &folders);
   if (!single_dir)
     display_files(g_first ? files : entries, opts);
