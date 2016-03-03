@@ -9,7 +9,7 @@
 #define BIN_NAME "my_ls"
 
 #define FCOLOR_EXECUTABLE FG_RED
-#define FCOLOR_LINK       FG_ICYAN
+#define FCOLOR_LINK       FG_MAGENTA
 #define FCOLOR_DIR        FG_IBLUE
 
 #define GUTTER_SIZE 2
