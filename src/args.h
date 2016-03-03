@@ -21,10 +21,11 @@ OPTIONS:\n\
 is not a terminal.\n\
   -C\t Force multi column output. This is the default when output is a\
  terminal.\n\
+  -h\t Use human-friendly file sizes in long list format.\n\
   --help Print help\n\
 "
 
-#define OPTION_LIST "lRrdtaALGgfF1C"
+#define OPTION_LIST "lRrdtaALGgfF1Ch"
 
 typedef struct s_opts {
     t_bool longlist;      /* -l */
@@ -41,6 +42,7 @@ typedef struct s_opts {
     t_bool filetypesymb;  /* -F */
     t_bool oneentperline; /* -1 */
     t_bool multicolumn;   /* -C */
+    t_bool humanfriendly; /* -h */
 } t_opts;
 
 extern t_opts *g_opts;

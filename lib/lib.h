@@ -20,6 +20,8 @@ void   my_put_longlong(long long n);
 char   *my_readfile(char* filename);
 char   *my_readline();
 char   *my_readnchars(int n);
+int    int_length_base(long n, int base);
+int    int_length(long n);
 char   *my_itoa(int n);
 char   *my_longlongtoa(long long n);
 int    my_getnbr(char *str);
