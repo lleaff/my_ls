@@ -33,6 +33,18 @@ void print_files_long(t_ll* files)
 
 #define COLSIZE_AT(x) (*(int*)(ll_nth(cols, (x) % c)->data))
 
+void print_filenames_nocols(t_ll *files)
+{
+    int i;
+
+    for (i = 0; files != NULL; files = files->next)
+    {
+        print_filename(files->data);
+        if (files->next != NULL)
+            print_gutter();
+    }
+}
+
 void print_filename_cols(t_finfo *finfo, int colsize)
 {
   print_filename(finfo);
@@ -48,10 +60,15 @@ void print_files_cols(t_ll *files)
   int i;
 
   cols = find_cols(files);
+  if (cols == NULL)
+  {
+      print_filenames_nocols(files);
+      return ;
+  }
   c = ll_length(cols);
   for (i = 0; files != NULL; files = files->next)
   {
-    print_filename_cols((t_finfo*)files->data, c ? COLSIZE_AT(i) : 0);
+    print_filename_cols(files->data, c ? COLSIZE_AT(i) : 0);
     if (i >= c - 1)
     {
       i = 0;

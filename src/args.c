@@ -62,7 +62,7 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
     if (!set_opt(c, opts))
       return (unknown_opt_err(c) || print_usage(true));
   for (i = optind, args = NULL; i < argc; i++)
-    args = ll_append(args, ll_new(argv[i]));
+    args = ll_append(args, ll_new(my_strnew(argv[i])));
   *o_args = args;
   *o_opts = opts;
 

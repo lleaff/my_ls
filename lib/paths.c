@@ -1,6 +1,6 @@
 #include "lib.h"
 
-t_bool path_is_current(char *path)
+static t_bool path_is_current(char *path)
 {
   if (!my_strcmp(path, "."))
     return (true);
@@ -32,4 +32,22 @@ char *concat_paths(char *pre, char *post)
   my_memcpy(res + l_pre + !trailing_slash, post, l_post);
   res[l_pre + !trailing_slash + l_post] = '\0';
   return (res);
+}
+
+t_bool path_is_dot_ref(char *path)
+{
+    int i;
+    int len;
+
+    if (path_is_current(path))
+        return (true);
+    len = my_strlen(path);
+
+    for (i = len - 1; i >= 0 && path[i] == '.'; i--)
+    {
+        if (i == 0 || path[i - 1] == '/')
+            return (true);
+    }
+
+    return (false);
 }

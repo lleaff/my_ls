@@ -74,11 +74,10 @@ t_bool scan_folder(t_ll *files, t_ll *folders, char *path,
   {
     ll_iter(folders) {
       finfo = (t_finfo*)folders->data;
+      if (!g_first && path_is_dot_ref(finfo->filename))
+          continue ;
       new_folder = g_first ? finfo->filename :
                              concat_paths(path, finfo->filename);
-      if (!g_first &&
-              (!my_strcmp(new_folder, ".") || !my_strcmp(new_folder, "./")))
-          continue ;
       if ((content = dircontent(new_folder, opts)) == NULL)
         continue ;
       print_dir_header_maybe(single_dir, g_first, ONLY_DIRS(files),
