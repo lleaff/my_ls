@@ -35,9 +35,7 @@ void print_files_long(t_ll* files)
 
 void print_filenames_nocols(t_ll *files)
 {
-    int i;
-
-    for (i = 0; files != NULL; files = files->next)
+    ll_iter(files)
     {
         print_filename(files->data);
         if (files->next != NULL)
