@@ -24,14 +24,14 @@ int finfo_cmp_modtimes_reverse(const void *a, const void *b)
   return (finfo_cmp_modtimes(a, b) * -1);
 }
 
-void sort_files(t_ll *files, t_opts *opts)
+void sort_files(t_ll *files)
 {
   int (*cmp)(const void*, const void*);
 
-  if (opts->sortmodtime)
-    cmp = opts->reverse ? finfo_cmp_modtimes_reverse : finfo_cmp_modtimes;
+  if (g_opts->sortmodtime)
+    cmp = g_opts->reverse ? finfo_cmp_modtimes_reverse : finfo_cmp_modtimes;
   else
-    cmp = opts->reverse ? finfo_cmp_names_reverse : finfo_cmp_names;
+    cmp = g_opts->reverse ? finfo_cmp_names_reverse : finfo_cmp_names;
 
   ll_sort(files, cmp);
 }

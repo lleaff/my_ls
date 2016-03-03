@@ -23,16 +23,17 @@ int main(int argc, char **argv)
 }
 */
 
+t_opts *g_opts;
+
 int main(int argc, char **argv)
 {
   t_ll *args;
-  t_opts *opts;
 
   if (check_help(argc, argv))
     return (0);
-  if (!parse_args(&args, &opts, argc, argv))
+  if (!parse_args(&args, &g_opts, argc, argv))
     return (1);
-  if (!my_ls(args, my_strnew("./"), opts))
+  if (!my_ls(args, my_strnew("./")))
     return (1);
   return (0);
 }

@@ -16,4 +16,6 @@ typedef struct s_opts {
     t_bool dereference;   /* -L */
 } t_opts;
 
+extern t_opts *g_opts;
+
 #endif /* ARGS_H */

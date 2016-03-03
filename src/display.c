@@ -4,9 +4,9 @@
 #include "my_ls.h"
 
 void print_dir_header_maybe(t_bool single_dir, t_bool first,
-                            t_bool only_dirs, t_opts *opts, char *name)
+                            t_bool only_dirs, char *name)
 {
-  if (single_dir && !opts->recursive)
+  if (single_dir && !g_opts->recursive)
     return ;
   if (!(first && only_dirs))
     my_putchar('\n');
@@ -83,12 +83,12 @@ void print_files_cols(t_ll *files)
   my_putchar('\n');
 }
 
-void display_files(t_ll *files, t_opts *opts)
+void display_files(t_ll *files)
 {
   if (files == NULL)
     return ;
 
-  if (opts->longlist)
+  if (g_opts->longlist)
     print_files_long(files);
   else
     print_files_cols(files);

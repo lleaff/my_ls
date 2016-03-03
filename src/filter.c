@@ -1,10 +1,10 @@
 #include "my_ls.h"
 
-t_bool filter_name(char *name, t_opts *opts)
+t_bool filter_name(char *name)
 {
-  if (!(opts->all || opts->almostall) && name[0] == '.')
+  if (!(g_opts->all || g_opts->almostall) && name[0] == '.')
     return (false);
-  if (opts->almostall && (!my_strcmp(name, ".") || !my_strcmp(name, "..")))
+  if (g_opts->almostall && (!my_strcmp(name, ".") || !my_strcmp(name, "..")))
     return (false);
   return (true);
 }

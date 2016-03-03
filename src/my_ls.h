@@ -55,10 +55,10 @@ void debug_finfo_ll(t_ll *files);
 
 /*------------------------------------------------------------*/
 
-t_ll *dircontent(char *path, t_opts *opts);
+t_ll *dircontent(char *path);
 char get_filetype_char(mode_t m);
 
-t_bool filter_name(char *name, t_opts *opts);
+t_bool filter_name(char *name);
 
 /* Display
  *------------------------------------------------------------*/
@@ -72,11 +72,11 @@ t_bool filter_name(char *name, t_opts *opts);
 
 #include "longlist_info.h"
 void print_dir_header_maybe(t_bool sngl, t_bool frst, t_bool only_dirs,
-                            t_opts *o, char *name);
+                            char *name);
 void print_dir_header(char *filename);
 void print_filename(t_finfo *f);
 t_ll *find_cols(t_ll *files);
-void display_files(t_ll *files, t_opts *opts);
+void display_files(t_ll *files);
 void display_total_blocks(t_ll *files);
 
 t_bool fill_longlist_info(t_ll *files, int *colsizes);
@@ -85,7 +85,7 @@ void print_file_long(t_finfo *finfo, int *colsizes);
 
 t_bool fill_size(t_ll *files, int *colsizes);
 
-void sort_files(t_ll *files, t_opts *opts);
+void sort_files(t_ll *files);
 
 void print_filename(t_finfo *f);
 void print_permissions(t_finfo *f);
@@ -100,7 +100,7 @@ void print_link_info(t_finfo *finfo);
 /*------------------------------------------------------------*/
 
 t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv);
-t_bool my_ls(t_ll *args, char *path, t_opts *opts);
+t_bool my_ls(t_ll *args, char *path);
 
 void free_entries(t_ll *entries, t_ll *files, t_ll *folders);
 
