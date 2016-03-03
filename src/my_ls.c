@@ -27,7 +27,7 @@ t_ll *get_fileinfos(t_ll *filenames, char *path, t_opts *opts)
   files = NULL;
   err = false;
   if (filenames == NULL)
-    filenames = ll_new(".");
+    filenames = ll_new(my_strnew("."));
   ll_iter(filenames) {
     filename = (char*)filenames->data;
     filepath = concat_paths(path, filename);
@@ -76,6 +76,9 @@ t_bool scan_folder(t_ll *files, t_ll *folders, char *path,
       finfo = (t_finfo*)folders->data;
       new_folder = g_first ? finfo->filename :
                              concat_paths(path, finfo->filename);
+      if (!g_first &&
+              (!my_strcmp(new_folder, ".") || !my_strcmp(new_folder, "./")))
+          continue ;
       if ((content = dircontent(new_folder, opts)) == NULL)
         continue ;
       print_dir_header_maybe(single_dir, g_first, ONLY_DIRS(files),

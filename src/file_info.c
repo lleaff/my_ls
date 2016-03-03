@@ -40,13 +40,9 @@ t_finfo *finfo_new(char *filename, t_stat *statbuf, char *path)
 void finfo_free(t_finfo *finfo)
 {
   free(finfo->filename);
-  free(finfo->path);
   free(finfo->link);
-  free(finfo->user);
-  free(finfo->group);
   free(finfo->hardlinksstr);
   free(finfo->sizestr);
-  free(finfo);
 }
 
 void debug_finfo_ll(t_ll *files)

@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     return (0);
   if (!parse_args(&args, &opts, argc, argv))
     return (1);
-  if (!my_ls(args, "./", opts))
+  if (!my_ls(args, my_strnew("./"), opts))
     return (1);
   return (0);
 }
