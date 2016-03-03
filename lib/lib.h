@@ -36,6 +36,7 @@ char   *my_strcatnew(char* pre, char* post);
 char   *my_strnew(char *buffer);
 char   *my_strnnew(char *buffer, int length);
 /* Paths */
+t_bool path_is_current(char *path);
 char   *concat_paths(char *pre, char *post);
 t_bool path_is_dot_ref(char *path);
 

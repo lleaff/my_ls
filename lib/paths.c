@@ -1,6 +1,6 @@
 #include "lib.h"
 
-static t_bool path_is_current(char *path)
+t_bool path_is_current(char *path)
 {
   if (!my_strcmp(path, "."))
     return (true);
@@ -21,7 +21,7 @@ char *concat_paths(char *pre, char *post)
 
   if (path_is_current(post))
     return (my_strnew(pre));
-  /* if (path_is_current(pre))
+   /* if (path_is_current(pre))
     return (my_strnew(post)); */
   l_pre  = my_strlen(pre);
   l_post = my_strlen(post);
