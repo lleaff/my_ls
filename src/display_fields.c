@@ -38,7 +38,7 @@ void print_permissions(t_finfo *finfo)
   my_putchar(S_IROTH & m ? 'r' : '-');
   my_putchar(S_IWOTH & m ? 'w' : '-');
   my_putchar(S_IXOTH & m ? 'x' : '-');
-  my_putchar(' ');
+  print_gutter();
 }
 
 void print_links_count(t_finfo *f, int *colsizes)
@@ -50,11 +50,11 @@ void print_links_count(t_finfo *f, int *colsizes)
 void print_user(t_finfo *finfo, int *colsizes)
 {
   my_putstrn(finfo->user, colsizes[COL_USER]);
-  my_putchar(' ');
+  print_gutter();
 }
 
 void print_group(t_finfo *finfo, int *colsizes)
 {
   my_putstrn(finfo->group, colsizes[COL_GROUP]);
-  my_putchar(' ');
+  print_gutter();
 }
