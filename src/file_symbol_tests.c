@@ -25,7 +25,11 @@ t_bool finfo_is_socket(t_finfo *finfo)
 
 t_bool finfo_is_whiteout(t_finfo *finfo)
 {
+#ifdef S_IFWHT
     return (FINFO_MODE_MASK(finfo) == S_IFWHT);
+#else
+    return (false);
+#endif
 }
 
 t_bool finfo_is_fifo(t_finfo *finfo)
