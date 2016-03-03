@@ -40,7 +40,7 @@ typedef struct s_finfo {
   char   *group;
   int    hardlinks;
   char   *hardlinksstr;
-  int    size;
+  off_t  size;
   char   *sizestr;
 } t_finfo;
 

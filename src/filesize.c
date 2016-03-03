@@ -10,7 +10,7 @@ t_bool fill_size(t_ll *files, int *colsizes)
   ll_iter(files) {
     finfo = (t_finfo*)files->data;
     finfo->size = finfo->stats.st_size;
-    finfo->sizestr = my_itoa(finfo->size);
+    finfo->sizestr = my_longlongtoa(finfo->size);
     len = my_strlen(finfo->sizestr);
     max_size_len = MAX(max_size_len, len);
   }

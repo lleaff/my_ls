@@ -50,3 +50,22 @@ void  my_put_nbr(int n)
       d /= 10;
     }
 }
+
+void  my_put_longlong(long long n)
+{
+  long d;
+
+  d = 1;
+  if (n < 0)
+    {
+      my_putchar('-');
+      n = -n;
+    }
+  while (n / d >= 10)
+    d *= 10;
+  while (d >= 1)
+    {
+      my_putchar(digit_to_char((n / d) % 10));
+      d /= 10;
+    }
+}
