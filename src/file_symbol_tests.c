@@ -1,3 +1,5 @@
+#define _GNU_SOURCE /* needed for lstat and readlink with gcc */
+
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
