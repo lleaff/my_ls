@@ -53,10 +53,13 @@ void finfo_free(t_finfo *finfo);
 void debug_finfo_ll(t_ll *files);
 #endif /* DEBUG */
 
+#include "filetype_tests.h"
+
 /*------------------------------------------------------------*/
 
 t_ll *dircontent(char *path);
 char get_filetype_char(mode_t m);
+char get_filetype_symbol(t_finfo *finfo);
 
 t_bool filter_name(char *name);
 

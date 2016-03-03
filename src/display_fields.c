@@ -38,6 +38,8 @@ void print_permissions(t_finfo *finfo)
   my_putchar(S_IROTH & m ? 'r' : '-');
   my_putchar(S_IWOTH & m ? 'w' : '-');
   my_putchar(S_IXOTH & m ? 'x' : '-');
+  if (g_opts->filetypesymb)
+      my_putchar(get_filetype_symbol(finfo));
   print_gutter();
 }
 

@@ -16,10 +16,11 @@ OPTIONS:\n\
   -G\t Colorize output.\n\
   -g\t Print group name (long list format without owner name).\n\
   -f\t Don't sort output. This option turns on the -a option.\n\
+  -F\t Display file type characters after modes in long list format.\n\
   --help Print help\n\
 "
 
-#define OPTION_LIST "lRrdtaALGgf"
+#define OPTION_LIST "lRrdtaALGgfF"
 
 typedef struct s_opts {
     t_bool longlist;      /* -l */
@@ -33,6 +34,7 @@ typedef struct s_opts {
     t_bool colorize;      /* -G */
     t_bool longlistgroup; /* -g */
     t_bool nosort;        /* -f */
+    t_bool filetypesymb;  /* -F */
 } t_opts;
 
 extern t_opts *g_opts;

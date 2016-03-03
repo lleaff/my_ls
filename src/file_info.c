@@ -70,12 +70,12 @@ static int filetype_masks[FILETYPES_COUNT] = {
 };
 
 static char filetype_chars[FILETYPES_COUNT] = {
-      '-',
-      'd',
-      'l',
-      'p',
-      'c',
-      'b'
+    '-',
+    'd',
+    'l',
+    'p',
+    'c',
+    'b'
 };
 
 char get_filetype_char(mode_t m)

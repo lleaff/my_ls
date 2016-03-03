@@ -25,6 +25,7 @@ static size_t g_opts_offsets[] = {
     offsetof(struct s_opts, colorize),
     offsetof(struct s_opts, longlistgroup),
     offsetof(struct s_opts, nosort),
+    offsetof(struct s_opts, filetypesymb),
 };
 
 t_bool set_opt(char c, t_opts *opts)
