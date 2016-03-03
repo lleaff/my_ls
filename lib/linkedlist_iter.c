@@ -11,23 +11,11 @@ t_ll*  ll_map(t_ll *node, void*(f)(t_ll* node))
   return (new_n);
 }
 
-typedef void*(t_ll_foldr_fn)(void* acc, t_ll* node);
-static void*  _ll_foldr(t_ll *node, t_ll_foldr_fn f, void *start)
+void*  ll_foldr(t_ll *node, void*(f)(void* acc, t_ll* node), void *start)
 {
-  void *res;
-  void *next_val;
-
   if (node == NULL)
     return (start);
-  next_val = ll_foldr(node->next, f, start);
-  res = f(next_val, node);
-  free(next_val);
-  return (res);
-}
-
-void*  ll_foldr(t_ll *node, t_ll_foldr_fn f, void *start)
-{
-    return (_ll_foldr(node, f, start));
+  return (f(ll_foldr(node->next, f, start), node));
 }
 
 void ll_foreach(t_ll *node, void (f)(void* data, t_ll* node, int i))

@@ -21,4 +21,3 @@ t_bool columns_too_large(t_ll *lengths, int width)
 
   return (full_length > width);
 }
-

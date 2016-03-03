@@ -17,10 +17,14 @@ OPTIONS:\n\
   -g\t Print group name (long list format without owner name).\n\
   -f\t Don't sort output. This option turns on the -a option.\n\
   -F\t Display file type characters after modes in long list format.\n\
+  -1\t Force output to be one entry per line. This is the default when output\
+is not a terminal.\n\
+  -C\t Force multi column output. This is the default when output is a\
+ terminal.\n\
   --help Print help\n\
 "
 
-#define OPTION_LIST "lRrdtaALGgfF"
+#define OPTION_LIST "lRrdtaALGgfF1C"
 
 typedef struct s_opts {
     t_bool longlist;      /* -l */
@@ -35,6 +39,8 @@ typedef struct s_opts {
     t_bool longlistgroup; /* -g */
     t_bool nosort;        /* -f */
     t_bool filetypesymb;  /* -F */
+    t_bool oneentperline; /* -1 */
+    t_bool multicolumn;   /* -C */
 } t_opts;
 
 extern t_opts *g_opts;

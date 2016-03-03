@@ -26,6 +26,8 @@ static size_t g_opts_offsets[] = {
     offsetof(struct s_opts, longlistgroup),
     offsetof(struct s_opts, nosort),
     offsetof(struct s_opts, filetypesymb),
+    offsetof(struct s_opts, oneentperline),
+    offsetof(struct s_opts, multicolumn),
 };
 
 t_bool set_opt(char c, t_opts *opts)
@@ -69,4 +71,3 @@ t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv)
   *o_opts = opts;
   return (true);
 }
-

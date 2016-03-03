@@ -14,6 +14,9 @@
 
 #define GUTTER_SIZE 2
 
+/* Width used when multi column output is forced outside of a terminal */
+#define DEFAULT_OUTPUT_WIDTH 80 
+
 /*------------------------------------------------------------*/
 
 #include <sys/stat.h>

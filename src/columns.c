@@ -66,7 +66,12 @@ t_ll *find_cols(t_ll *files)
 
   term_cols = get_window_columns();
   if (term_cols == -1)
-      return (NULL);
+  {
+      if (g_opts->multicolumn)
+          term_cols = DEFAULT_OUTPUT_WIDTH;
+      else
+          return (NULL);
+  }
 
   if (one_liner(files, term_cols, &cols))
     return (cols);
