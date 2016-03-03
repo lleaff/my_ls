@@ -28,7 +28,7 @@ static size_t g_opts_offsets[] = {
     offsetof(struct s_opts, filetypesymb),
     offsetof(struct s_opts, oneentperline),
     offsetof(struct s_opts, multicolumn),
-    offsetof(struct s_opts, humanfriendly),
+    offsetof(struct s_opts, humanreadable),
 };
 
 t_bool set_opt(char c, t_opts *opts)

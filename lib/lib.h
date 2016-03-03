@@ -33,10 +33,12 @@ int    char_in_str(char c, char *str);
 char   *my_strstr(char *str, char *to_find);
 char   **my_str_to_wordtab(char *str);
 void   my_strpush(char* dest, char* to_push);
-void   my_strnpush(char* dest, char* toPush, int n);
+void   my_strnpush(char* dest, char* to_push, int n);
+char   *last_n_chars(char* str, int n);
 char   *my_strcatnew(char* pre, char* post);
 char   *my_strnew(char *buffer);
 char   *my_strnnew(char *buffer, int length);
+char   *size_to_human_readable(long size);
 /* Paths */
 t_bool path_is_current(char *path);
 char   *concat_paths(char *pre, char *post);

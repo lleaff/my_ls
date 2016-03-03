@@ -12,7 +12,7 @@ INC = -Ilib
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) -o $(TARGET) $(OBJ)
+	$(CC) -o $(TARGET) $(OBJ) -lm
 
 $(OBJ): $(SRC) $(LIB)
 	$(CC) $(INC) $(CFLAGS) -c $(SRC) $(LIB)
