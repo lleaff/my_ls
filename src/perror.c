@@ -1,7 +1,12 @@
 #include "my_ls.h"
 #include <errno.h>
 
-int errno_vals[] = {
+/*
+ * Taken from:
+ * http://man7.org/linux/man-pages/man3/errno.3.html
+ */
+
+static int ERRNO_VALS[] = {
 #ifdef E2BIG
     E2BIG,
 #endif
@@ -364,7 +369,7 @@ int errno_vals[] = {
 #endif
 };
 
-char *errno_msgs[] = {
+static char *ERRNO_MSGS[] = {
 #ifdef E2BIG
     "Argument list too long", 
 #endif
@@ -733,10 +738,10 @@ void my_perror(char *str)
 
     my_puterr(str);
     my_puterr(": ");
-    errindex = int_in_arr(errno, errno_vals, ARRLEN(errno_vals));
+    errindex = int_in_arr(errno, ERRNO_VALS, ARRLEN(ERRNO_VALS));
     if (errindex == -1)
         my_puterr("Unknown error");
     else
-        my_puterr(errno_msgs[errindex]);
+        my_puterr(ERRNO_MSGS[errindex]);
     my_putstr(".\n");
 }
