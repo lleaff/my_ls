@@ -29,6 +29,7 @@ static size_t g_opts_offsets[] = {
     offsetof(struct s_opts, oneentperline),
     offsetof(struct s_opts, multicolumn),
     offsetof(struct s_opts, humanreadable),
+    offsetof(struct s_opts, streamformat),
 };
 
 t_bool set_opt(char c, t_opts *opts)

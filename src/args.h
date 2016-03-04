@@ -22,11 +22,13 @@ OPTIONS:\n\
 is not a terminal.\n\
   -C\t Force multi column output. This is the default when output is a\
  terminal.\n\
+  -C\t Stream output format. Display filenames on the same line separated by\
+ commas.\n\
   -h\t Use human readable file sizes in long list format.\n\
   --help Print help\n\
 "
 
-#define OPTION_LIST "lRrdtaALGgfF1Ch"
+#define OPTION_LIST "lRrdtaALGgfF1Chm"
 
 typedef struct s_opts {
     t_bool longlist;      /* -l */
@@ -44,6 +46,7 @@ typedef struct s_opts {
     t_bool oneentperline; /* -1 */
     t_bool multicolumn;   /* -C */
     t_bool humanreadable; /* -h */
+    t_bool streamformat;  /* -m */
 } t_opts;
 
 extern t_opts *g_opts;

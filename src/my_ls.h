@@ -103,6 +103,11 @@ void print_time(time_t t);
 void print_mod_date(t_finfo *finfo);
 void print_link_info(t_finfo *finfo);
 
+void print_files_cols(t_ll *files);
+void print_files_long(t_ll* files);
+void print_files_stream(t_ll *files);
+void print_filenames_nocols(t_ll *files);
+
 /*------------------------------------------------------------*/
 
 t_bool parse_args(t_ll **o_args, t_opts **o_opts, int argc, char **argv);

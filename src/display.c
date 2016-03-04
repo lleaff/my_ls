@@ -3,9 +3,6 @@
 #include <unistd.h>
 #include "my_ls.h"
 
-void print_files_cols(t_ll *files);
-void print_files_long(t_ll* files);
-
 void print_dir_header_maybe(t_bool single_dir, t_bool first,
                             t_bool only_dirs, char *name)
 {
@@ -25,10 +22,12 @@ void print_dir_header(char *filename)
 void display_files(t_ll *files)
 {
   if (files == NULL)
-    return ;
+      return ;
 
   if (g_opts->longlist)
-    print_files_long(files);
+      print_files_long(files);
+  if (g_opts->streamformat)
+      print_files_stream(files);
   else
-    print_files_cols(files);
+      print_files_cols(files);
 }
