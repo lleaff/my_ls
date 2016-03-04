@@ -9,6 +9,7 @@
 void print_filename(t_finfo *finfo)
 {
   char *color;
+  char filetypesym;
   
   if (finfo->islink)
     color = FCOLOR_LINK;
@@ -22,7 +23,11 @@ void print_filename(t_finfo *finfo)
   my_putstr(finfo->filename);
   my_putstr(g_opts->colorize ? COLOR_RESET : "");
   if (g_opts->filetypesymb)
-      my_putchar(get_filetype_symbol(finfo));
+  {
+      filetypesym = get_filetype_symbol(finfo);
+      if (!(g_opts->streamformat && filetypesym == ' '))
+          my_putchar(filetypesym);
+  }
 }
 
 void print_permissions(t_finfo *finfo)
