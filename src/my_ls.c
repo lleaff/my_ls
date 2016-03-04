@@ -34,12 +34,13 @@ t_ll *get_fileinfos(t_ll *filenames, char *path)
   ll_iter(filenames) {
     filename = (char*)filenames->data;
     filepath = build_path(path, filename);
-    if (get_stats(filepath, &statbuf) == -1) {
+    if (get_stats(filepath, &statbuf) == -1) 
       err = !file_error(filename);
-      continue ;
+    else
+    {
+        finfo_tmp = finfo_new(filename, &statbuf, path);
+        files = ll_append(files, ll_new(finfo_tmp));
     }
-    finfo_tmp = finfo_new(filename, &statbuf, path);
-    files = ll_append(files, ll_new(finfo_tmp));
   }
   sort_files(files);
   return (!err ? files : NULL);

@@ -18,9 +18,9 @@ t_ll *dircontent(char *path)
   for(ent = readdir(dir); ent != NULL; ent = readdir(dir))
   {
     name = ent->d_name;
-    if (!filter_name(name))
-      continue ;
-    filenames = ll_append(filenames, ll_new_data(name, my_strlen(name) + 1));
+    if (filter_name(name))
+        filenames =
+            ll_append(filenames, ll_new_data(name, my_strlen(name) + 1));
   }
   closedir(dir);
   return (filenames);
