@@ -26,7 +26,7 @@ void display_files(t_ll *files)
 
   if (g_opts->longlist)
       print_files_long(files);
-  if (g_opts->streamformat)
+  else if (g_opts->streamformat)
       print_files_stream(files);
   else
       print_files_cols(files);
