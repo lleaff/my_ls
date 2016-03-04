@@ -19,7 +19,8 @@ void print_files_stream(t_ll *files)
     ll_iter(files)
     {
         last = files->next == NULL;
-        line_width += my_strlen(FINFO_LL_FILENAME(files)) + (!last * 4);
+        line_width += my_strlen(FINFO_LL_FILENAME(files)) + (!last * 4)
+            + g_opts->filetypesymb;
         if (line_width > term_width)
         {
             my_putstr("\n");
