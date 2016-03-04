@@ -30,7 +30,7 @@ void print_filename_cols(t_finfo *finfo, int colsize)
 {
   print_filename(finfo);
   if (colsize)
-    my_putstrn("", colsize - my_strlen(finfo->filename));
+    my_putstrn("", colsize - my_strlen(finfo->filename) - g_opts->filetypesymb);
   else
     my_putchar('\n');
 }

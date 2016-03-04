@@ -16,7 +16,8 @@ OPTIONS:\n\
   -G\t Colorize output.\n\
   -g\t Print group name (long list format without owner name).\n\
   -f\t Don't sort output. This option turns on the -a option.\n\
-  -F\t Display file type characters after modes in long list format.\n\
+  -F\t Display file type symbols after filenames (/ for directories,\
+ @ for symbolic links, etc...).\n\
   -1\t Force output to be one entry per line. This is the default when output\
 is not a terminal.\n\
   -C\t Force multi column output. This is the default when output is a\

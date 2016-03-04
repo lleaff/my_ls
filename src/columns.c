@@ -43,7 +43,7 @@ static t_ll *find_cols_rec(t_ll *files, int c, int width)
   for (i = 0, file = files; file != NULL; i++, file = file->next)
   {
     max = COLSIZE_AT(i);
-    len = my_strlen(FINFO_LL_FILENAME(file));
+    len = my_strlen(FINFO_LL_FILENAME(file)) + g_opts->filetypesymb;
     if (len > max)
     {
       COLSIZE_AT(i) = len;
