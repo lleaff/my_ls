@@ -15,7 +15,7 @@ int nth_digit(long num, int n)
 }
 
 char MEM_SIZE_SUFFIXES[] = {
-  '\0',
+  'B',
   'K',
   'M',
   'G',
@@ -53,6 +53,8 @@ static char *_num_to_unit_suffixed(long n, char suffix)
   return (res);
 }
 
+#include <stdio.h> /* DEBUG */
+
 char *size_to_human_readable(long size)
 {
   long exp;
@@ -60,7 +62,7 @@ char *size_to_human_readable(long size)
   char unit;
 
   if (size < SIZE_BS)
-    return my_longlongtoa(size);
+    return _num_to_unit_suffixed(size, MEM_SIZE_SUFFIXES[0]);
   exp = log(size) / log(SIZE_BS);
   if (exp >= STRLEN(MEM_SIZE_SUFFIXES))
     return (my_longlongtoa(size));
