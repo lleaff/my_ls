@@ -14,15 +14,6 @@ t_bool check_help(int argc, char **argv)
   return (false);
 }
 
-/* DEBUG */
-/*
-int main(int argc, char **argv)
-{
-  printf("[%s]\n", concat_paths("yo", "man"));
-  return (0);
-}
-*/
-
 t_opts *g_opts;
 
 int main(int argc, char **argv)

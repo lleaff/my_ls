@@ -4,7 +4,7 @@
 /* Configuration
  *------------------------------------------------------------*/
 
-#define DEBUG
+/* #define DEBUG */
 
 #define BIN_NAME "my_ls"
 

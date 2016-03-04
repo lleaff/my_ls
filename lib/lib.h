@@ -7,6 +7,8 @@
 #include "colors.h"
 #include "my_memcpy.h"
 
+void   *noop(void *);
+void   *noop2(void *, void *);
 void   *my_memset(void *ptr, char byte, size_t n);
 int    int_in_arr(int n, int *arr, int length);
 void   my_putchar(char c);
