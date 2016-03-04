@@ -53,8 +53,6 @@ static char *_num_to_unit_suffixed(long n, char suffix)
   return (res);
 }
 
-#include <stdio.h> /* DEBUG */
-
 char *size_to_human_readable(long size)
 {
   long exp;

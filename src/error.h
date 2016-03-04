@@ -7,5 +7,7 @@ int    fail(char *msg);
 void   *fail_ptr(char *msg);
 t_bool file_error(char *filename);
 void   *file_error_ptr(char *f);
+void   my_perror(char *str);
+
 
 #endif /* ERROR_H */

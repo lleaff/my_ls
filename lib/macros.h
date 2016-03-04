@@ -13,4 +13,8 @@
 #define STRLEN(s) (sizeof(s) - 1)
 #endif /* STRLEN */
 
+#ifndef ARRLEN
+#define ARRLEN(s) (sizeof(s) / sizeof(s[0]))
+#endif /* ARRLEN */
+
 #endif /* MACROS_H */

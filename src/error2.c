@@ -19,7 +19,7 @@ t_bool file_error(char *f)
 {
   my_puterr(FG_RED);
   my_puterr(BIN_NAME": ");
-  perror(f);
+  my_perror(f);
   my_puterr(COLOR_RESET);
   return (false);
 }
