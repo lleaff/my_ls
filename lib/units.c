@@ -44,8 +44,8 @@ static char *_num_to_unit_suffixed(long n, char suffix)
   else
   {
     buf[0] = numstr[0];
-    buf[1] = ',';
-    buf[2] = numstr[1];
+    buf[1] = len > 1 ? ',' : '\0';
+    buf[2] = len > 1 ? numstr[1] : '\0';
     buf[3] = '\0';
     res = my_strcatnew(buf, unitstr);
   }
