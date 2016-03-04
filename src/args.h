@@ -9,7 +9,7 @@ OPTIONS:\n\
   -m\t Stream output format. Display filenames on the same line separated by\
  commas.\n\
   -1\t Force output to be one entry per line. This is the default when output\
-is not a terminal.\n\
+ is not a terminal.\n\
   -C\t Force multi column output. This is the default when output is a\
  terminal.\n\
   -R\t Recursive.\n\
