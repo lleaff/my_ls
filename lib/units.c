@@ -19,7 +19,8 @@ char MEM_SIZE_SUFFIXES[] = {
   'K',
   'M',
   'G',
-  'T'
+  'T',
+  'P'
 };
 
 #define SIZE_BS 1024
